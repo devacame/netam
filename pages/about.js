@@ -19,7 +19,7 @@ export default function About() {
   }
   return (
     <Container meta={meta}>
-      <div className='flex flex-col w-4/5 text-center items-center bg-gray-100 dark:bg-darkPoint rounded-lg py-5 mx-auto my-10'>
+      <div className='flex flex-col w-4/5 text-center items-center bg-gray-100 dark:bg-darkBody rounded-lg py-5 mx-auto my-10'>
         {isKo && (
           <div>
             <h1 className='text-center'>
@@ -100,9 +100,9 @@ export default function About() {
             </div>
           </div>
         )}
-        <p className='text-dark'>coder38611@pm.me</p>
+        <p className='text-lightBlue'>coder38611@pm.me</p>
         <button
-          className='w-28 my-3 px-3 py-2 text-eerie bg-dark rounded-lg'
+          className='w-28 my-3 px-3 py-2 text-gray-50 bg-lightBlue rounded-lg'
           onClick={() => setIsKo(!isKo)}
         >
           {isKo ? 'English' : '한국어'}
