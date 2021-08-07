@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 @tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  a {
+    @apply text-blueSub;
+  }
+  a:hover {
+    @apply text-lightBlue;
+  }
+  p {
+    @apply text-baseColor text-base;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
+
+html.light {
+  background-color: #f6f6f6;
+}
+
+html.dark {
+  background-color: #121212;
+}
+
+.skip-nav {
+  height: 30px;
+  left: 50%;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+.skip-nav:focus {
+  transform: translateY(0%);
+}
