@@ -1,21 +1,24 @@
 import SEO from '@/components/SEO'
 import NavBar from '@/components/NavBar'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
+import { useState, useEffect } from 'react'
 
 export default function Container({ children, meta }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
   return (
     <div>
       <SEO meta={meta} />
-      <div className='w-screen h-screen flex flex-row'>
+      <div className='w-screen flex flex-row'>
         <NavBar />
         <main
           id='skip'
-          className='flex justify-center items-center h-full w-3/4 sm:w-full p-5 bg-light dark:bg-dark'
+          className='flex flex-col justify-center items-center w-2/3 p-5 bg-light dark:bg-dark'
         >
           {children}
         </main>
       </div>
-      <ThemeToggleBtn />
+      <ThemeToggleBtn mounted={mounted} />
     </div>
   )
 }

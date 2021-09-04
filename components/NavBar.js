@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function NavBar() {
   return (
-    <nav className='md:h-screen w-1/4 sm:h-1/6 mr-4 bg-light sticky-nav dark:bg-dark'>
+    <nav className='h-screen w-1/4 mr-4 bg-light sticky-nav dark:bg-dark'>
       <a href='#skip' className='skip-nav'>
         Skip to content
       </a>
