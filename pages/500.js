@@ -1,3 +1,5 @@
+'use strict'
+
 import Link from 'next/link'
 import SEO from '@/components/SEO'
 

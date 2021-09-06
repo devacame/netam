@@ -1,3 +1,5 @@
+'use strict'
+
 import Container from '@/components/Container'
 
 export default function Home() {

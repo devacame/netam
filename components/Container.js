@@ -1,3 +1,5 @@
+'use strict'
+
 import SEO from '@/components/SEO'
 import NavBar from '@/components/NavBar'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'

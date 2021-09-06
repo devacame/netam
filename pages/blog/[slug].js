@@ -1,3 +1,5 @@
+'use strict'
+
 import Container from '@/components/Container'
 import { getPosts, getPostbySlug } from '@/lib/markdown'
 import { MDXRemote } from 'next-mdx-remote'

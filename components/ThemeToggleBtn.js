@@ -1,3 +1,5 @@
+'use strict'
+
 import { useTheme } from 'next-themes'
 
 export default function ThemeToggleBtn({ mounted }) {
