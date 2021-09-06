@@ -1,4 +1,4 @@
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 @import 'prism-nord.css';
 @import url('https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css');
 
@@ -33,12 +33,16 @@
     @apply select-all;
   }
   article {
-      @apply break-words;
+    @apply break-words;
   }
 }
 
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-family: Spoqa Han Sans Neo;
+}
 
 html.light {
   background-color: #f6f6f6;
