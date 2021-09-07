@@ -20,7 +20,7 @@ export default function SEO({ meta }) {
         property='og:type'
         content={router.asPath.startsWith('/blog') ? 'article' : 'website'}
       />
-      <meta property='og:site_name' content='Coder38611' />
+      <meta property='og:site_name' content='VESOC' />
       <meta property='og:description' content={meta?.description} />
       <meta property='og:locale' content='ko_KR' />
       <meta property='og:title' content={meta?.title} />
@@ -70,6 +70,30 @@ export default function SEO({ meta }) {
         rel='apple-touch-icon'
         sizes='180x180'
         href='icons/apple-touch-icon-180x180.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='192x192'
+        href='/android-icon-192x192.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='32x32'
+        href='/favicon-32x32.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='96x96'
+        href='/favicon-96x96.png'
+      />
+      <link
+        rel='icon'
+        type='image/png'
+        sizes='16x16'
+        href='/favicon-16x16.png'
       />
     </Head>
   )
