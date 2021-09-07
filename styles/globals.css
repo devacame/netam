@@ -21,13 +21,21 @@
     @apply text-blue-300;
   }
   p {
-    @apply text-baseColor text-base leading-snug;
+    @apply text-baseColor text-base leading-normal mb-1;
   }
   ul {
     @apply list-disc list-outside;
   }
   ol {
     @apply list-decimal list-outside;
+  }
+  em,
+  i {
+    @apply text-red-200;
+  }
+  b,
+  strong {
+    @apply font-extrabold;
   }
   code {
     @apply select-all;
@@ -63,4 +71,10 @@ html.dark {
 
 .skip-nav:focus {
   transform: translateY(0%);
+}
+
+.sticky-nav {
+  position: sticky;
+  height: 100vh;
+  top: 0;
 }
