@@ -22,5 +22,5 @@ const Anchor = (props) => {
 
 export const components = {
   a: Anchor,
-  img: Image,
+  Image,
 }
