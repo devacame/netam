@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = {
+  mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
@@ -19,8 +20,8 @@ module.exports = {
         'darkBody': '#18181b',
       },
       backgroundImage: (theme) => ({
-        '404': "url('/404.svg')",
-        '500': "url('/500.svg')",
+        '404': "url('/backgrounds/404.svg')",
+        '500': "url('/backgrounds/500.svg')",
       }),
       fontFamily: {
         body: ['SpoqaHanSansNeo'],
