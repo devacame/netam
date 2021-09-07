@@ -11,11 +11,11 @@ export default function Container({ children, meta }) {
   return (
     <div>
       <SEO meta={meta} />
-      <div className='w-screen flex flex-row'>
+      <div className='flex flex-row'>
         <NavBar />
         <main
           id='skip'
-          className='flex flex-col justify-center items-center w-2/3 p-5 bg-light dark:bg-dark'
+          className='flex flex-col justify-center items-center w-2/3 pb-5 pl-20 pr-20 pt-3 mx-auto bg-light dark:bg-dark'
         >
           {children}
         </main>
