@@ -6,13 +6,13 @@
 
 @layer base {
   h1 {
-    @apply text-3xl;
+    @apply text-3xl m-2;
   }
   h2 {
-    @apply text-2xl;
+    @apply text-2xl m-2;
   }
   h3 {
-    @apply text-xl;
+    @apply text-xl m-2;
   }
   a {
     @apply text-lightBlue;
@@ -41,7 +41,7 @@
     @apply select-all;
   }
   article {
-    @apply break-words;
+    @apply whitespace-pre;
   }
 }
 
@@ -73,8 +73,17 @@ html.dark {
   transform: translateY(0%);
 }
 
-.sticky-nav {
+.toc {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  @apply w-80 flex justify-center border-dashed border-4 rounded-md;
+}
+
+.toc-list {
   position: sticky;
-  height: 100vh;
-  top: 0;
+}
+
+.toc-item {
+  @apply text-gray-700 dark:text-white text-sm;
 }
