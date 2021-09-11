@@ -31,7 +31,7 @@ const Heading3 = ({ children }) => {
 }
 export const components = {
   a: Anchor,
-  Image,
+  img: Image,
   h2: Heading2,
   h3: Heading3,
 }
