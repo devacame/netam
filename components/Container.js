@@ -15,7 +15,7 @@ export default function Container({ children, meta }) {
         <NavBar />
         <main
           id='skip'
-          className='flex flex-col justify-center items-center w-2/3 pb-5 pl-20 pr-20 pt-3 mx-auto bg-light dark:bg-dark'
+          className='flex flex-col justify-center items-center w-7/12 pb-5 pl-10 pr-10 pt-3 ml-5 bg-light dark:bg-dark'
         >
           {children}
         </main>
