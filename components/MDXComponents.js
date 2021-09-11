@@ -9,10 +9,8 @@ const Anchor = (props) => {
 
   if (isInternalLink) {
     return (
-      <Link id='hi' href={href}>
-        <a className='text-xl' {...props}>
-          {props.children}
-        </a>
+      <Link href={href}>
+        <a {...props}>{props.children}</a>
       </Link>
     )
   }
@@ -21,13 +19,13 @@ const Anchor = (props) => {
 }
 
 const Heading2 = ({ children }) => {
-  const id = children.replace(/ /g, '_').toLowerCase()
+  const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
 
   return <h2 id={id}>{children}</h2>
 }
 
 const Heading3 = ({ children }) => {
-  const id = children.replace(/ /g, '_').toLowerCase()
+  const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
 
   return <h3 id={id}>{children}</h3>
 }
