@@ -1,21 +1,21 @@
 'use strict'
 
 import SEO from '@/components/SEO'
-import NavBar from '@/components/NavBar'
+import Nav from '@/components/Nav'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
 import { useState, useEffect } from 'react'
 
-export default function Container({ children, meta }) {
+export default function BaseLayout({ children, meta }) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   return (
     <div>
       <SEO meta={meta} />
       <div className='flex flex-row'>
-        <NavBar />
+        <Nav />
         <main
           id='skip'
-          className='flex flex-col justify-center items-center w-7/12 pb-5 pl-10 pr-10 pt-3 ml-5 bg-light dark:bg-dark'
+          className='lg:mt-0 mt-14 flex flex-col justify-center items-center lg:w-3/4 w-4/5 mx-auto pb-5 pl-10 pr-10 pt-3 bg-light dark:bg-dark'
         >
           {children}
         </main>
