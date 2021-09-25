@@ -8,7 +8,7 @@ import {
   SiNextDotJs,
   SiNodeDotJs,
 } from 'react-icons/si'
-import Container from '@/components/Container'
+import BaseLayout from '@/components/BaseLayout'
 
 export default function About() {
   const meta = {
@@ -18,7 +18,7 @@ export default function About() {
     image: `${process.env.BASE_URL}/icons/coder38611.png`,
   }
   return (
-    <Container meta={meta}>
+    <BaseLayout meta={meta}>
       <div className='flex flex-col w-4/5 text-center items-center bg-gray-100 dark:bg-darkBody rounded-lg py-5 mx-auto my-10'>
         <div>
           <h1 className='text-center'>안녕하세요! 저는 💻VESOC입니다.</h1>
@@ -57,6 +57,6 @@ export default function About() {
           [MAIL]
         </a>
       </div>
-    </Container>
+    </BaseLayout>
   )
 }

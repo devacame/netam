@@ -1,6 +1,6 @@
 'use strict'
 
-import Container from '@/components/Container'
+import BlogLayout from '@/components/BlogLayout'
 import { getPosts, getPost } from '@/lib/markdown'
 import { getHeadings } from '@/lib/toc'
 import { MDXRemote } from 'next-mdx-remote'
@@ -16,18 +16,14 @@ export default function Post({ meta, content }) {
     setRenderToC(true)
   }, [])
   return (
-    <>
+    <BlogLayout meta={meta}>
+      <h1>{meta.title}</h1>
+      <p className='text-center text-black dark:text-white'>
+        {meta.date} | {meta.readingTime}분
+      </p>
       {renderToC && <ToC headings={headers.current} />}
-      <Container meta={meta}>
-        <header>
-          <h1>{meta.title}</h1>
-          <p className='text-center text-black dark:text-white'>
-            {new Date(meta.date).toLocaleDateString()} | {meta.readingTime}분
-          </p>
-        </header>
-        <MDXRemote {...content} components={components} />
-      </Container>
-    </>
+      <MDXRemote {...content} components={components} />
+    </BlogLayout>
   )
 }
 
