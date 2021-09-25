@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none">
-<linearGradient id="g286" gradientUnits="userSpaceOnUse" x1="100%" y1="100%" x2="0%" y2="0%">
-<stop stop-color="#334257" offset="0"/><stop stop-color="#548CA8" offset="1"/>
-</linearGradient>
-<rect x="0" y="0" width="1" height="1" fill="url(#g286)" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1 1"><linearGradient id="g286" x1="100%" x2="0%" y1="100%" y2="0%" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#334257"/><stop offset="1" stop-color="#548CA8"/></linearGradient><rect width="1" height="1" x="0" y="0" fill="url(#g286)"/></svg>
