@@ -6,13 +6,16 @@
 
 @layer base {
   h1 {
-    @apply text-3xl m-2;
+    @apply lg:text-3xl text-2xl m-2;
+    color: #27a1b9;
   }
   h2 {
-    @apply text-2xl m-2;
+    @apply lg:text-2xl text-xl m-2;
+    color: #41b19c;
   }
   h3 {
-    @apply text-xl m-2;
+    @apply lg:text-xl text-lg m-2;
+    color: #41b19c;
   }
   a {
     @apply text-lightBlue;
@@ -31,7 +34,7 @@
   }
   em,
   i {
-    @apply text-red-200;
+    @apply text-red-400 dark:text-red-200;
   }
   b,
   strong {
@@ -73,17 +76,65 @@ html.dark {
   transform: translateY(0%);
 }
 
+.dropdown {
+  height: auto;
+  backdrop-filter: blur(1.5rem) opacity(0.5);
+}
+
 .toc {
-  position: fixed;
-  right: 20px;
-  top: 20px;
-  @apply w-80 flex justify-center border-dashed border-4 rounded-md;
+  @apply pl-3 pr-3 pt-1 pb-1 justify-center border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
+  z-index: 1000;
 }
 
 .toc-list {
-  position: sticky;
+  @apply flex flex-col list-none top-0;
 }
 
 .toc-item {
   @apply text-gray-700 dark:text-white text-sm;
+}
+
+.remark-highlight {
+  @apply overflow-auto w-full text-base;
+}
+
+.nav {
+  @apply w-1/6 bg-light dark:bg-dark;
+}
+
+.list {
+  @apply flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark;
+}
+
+.item {
+  font-size: 1.75rem;
+}
+
+.btn {
+  @apply hidden absolute h-full my-auto left-3 cursor-pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .dropdown {
+    @apply hidden;
+  }
+  .toc {
+    @apply hidden;
+  }
+  .nav {
+    @apply fixed top-0 w-full h-14 bg-light dark:bg-dark;
+  }
+  .list {
+    height: auto;
+    @apply flex flex-col;
+  }
+  .item:nth-child(1) {
+    @apply mt-14;
+  }
+  .item {
+    @apply w-full text-center mr-0 pl-5 pr-5;
+  }
+  .btn {
+    @apply block;
+  }
 }
