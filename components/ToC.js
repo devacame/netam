@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import { getHeadings } from '@/lib/toc'
 
 export default function ToC({}) {
-  let headers = getHeadings()
+  let headings = useRef(getHeadings())
   const [open, setOpen] = useState(false)
   const toggleDropdown = () => {
     setOpen(!open)
@@ -23,7 +23,7 @@ export default function ToC({}) {
       .scrollIntoView()
   }
   return (
-    <div className='dropdown sticky flex flex-col justify-center top-0 w-full bg-light dark:bg-dark'>
+    <div className='dropdown sticky z-40 flex flex-col justify-center top-0 w-full bg-light dark:bg-dark'>
       <button
         className='flex flex-row gap-x-2 justify-center items-center'
         onClick={toggleDropdown}
@@ -35,7 +35,7 @@ export default function ToC({}) {
       {open && (
         <div className='toc dark:bg-dark bg-light'>
           <ul className='toc-list'>
-            {headers.map((heading) => (
+            {headings.current.map((heading) => (
               <li key={heading.id}>
                 <Link href={`#${heading.id}`}>
                   <a className='toc-item' onClick={moveHeading}>
