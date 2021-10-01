@@ -1,5 +1,3 @@
-'use strict'
-
 import BlogLayout from '@/components/BlogLayout'
 import { getPosts, getPost } from '@/lib/markdown'
 import { getHeadings } from '@/lib/toc'
