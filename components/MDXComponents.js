@@ -30,7 +30,7 @@ const Heading3 = ({ children }) => {
 
 const CustomImage = ({ src, alt, children }) => {
   return (
-    <div className='unset-img border-2 border-gray-100 rounded-sm'>
+    <div className='unset-img border-2 border-gray-700 dark:border-gray-300 rounded-sm'>
       <Image src={src} alt={alt} layout='fill' className='custom-img'>
         {children}
       </Image>
