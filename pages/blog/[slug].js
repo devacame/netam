@@ -6,13 +6,11 @@ import { getHeadings } from '@/lib/toc'
 import { MDXRemote } from 'next-mdx-remote'
 import { components } from '@/components/MDXComponents'
 import ToC from '@/components/ToC'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Post({ meta, content }) {
   const [renderToC, setRenderToC] = useState(false)
-  let headers = useRef([])
   useEffect(() => {
-    headers.current = getHeadings()
     setRenderToC(true)
   }, [])
   return (
@@ -21,7 +19,7 @@ export default function Post({ meta, content }) {
       <p className='text-center text-black dark:text-white'>
         {meta.date} | {meta.readingTime}분
       </p>
-      {renderToC && <ToC headings={headers.current} />}
+      {renderToC && <ToC />}
       <MDXRemote {...content} components={components} />
     </BlogLayout>
   )
@@ -29,9 +27,9 @@ export default function Post({ meta, content }) {
 
 export async function getStaticPaths() {
   const posts = await getPosts()
-  const paths = posts.map((file) => ({
+  const paths = posts.map((path) => ({
     params: {
-      slug: file.replace('.mdx', ''),
+      slug: path,
     },
   }))
 
