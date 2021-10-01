@@ -5,9 +5,17 @@ import SearchResults from '@/components/SearchResults'
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [openResult, setOpenResult] = useState(false)
+
+  const toggleResults = () => {
+    return setTimeout(() => {
+      setOpenResult(!openResult)
+    }, 100)
+  }
 
   useEffect(() => {
     const getResults = async () => {
+      if (!openResult) return
       const keyword = searchTerm.trim()
       if (keyword === '') {
         setSearchResults([])
@@ -19,7 +27,7 @@ export default function Search() {
     }
 
     getResults()
-  }, [searchTerm])
+  }, [searchTerm, openResult])
 
   return (
     <div className='relative mx-auto text-gray-600 w-full'>
@@ -31,11 +39,19 @@ export default function Search() {
           className='relative bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onBlur={(e) => {
+            toggleResults()
+          }}
+          onFocus={(e) => {
+            toggleResults()
+          }}
           autoComplete='off'
         />
         <FaSearch className='absolute right-4 text-black' />
       </form>
-      <SearchResults results={searchResults} setSearchTerm={setSearchTerm} />
+      {openResult && (
+        <SearchResults results={searchResults} setSearchTerm={setSearchTerm} />
+      )}
     </div>
   )
 }
