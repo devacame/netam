@@ -15,7 +15,7 @@
   }
   h3 {
     @apply lg:text-xl text-lg m-2;
-    color: #41b19c;
+    color: #916bbf;
   }
   a {
     @apply text-lightBlue;
@@ -63,6 +63,16 @@ html.dark {
   background-color: #121212;
 }
 
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+}
+
 .skip-nav {
   height: 30px;
   left: 50%;
@@ -83,7 +93,6 @@ html.dark {
 
 .toc {
   @apply pl-3 pr-3 pt-1 pb-1 justify-center border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
-  z-index: 1000;
 }
 
 .toc-list {
@@ -125,8 +134,7 @@ html.dark {
     @apply fixed top-0 w-full h-14 bg-light dark:bg-dark;
   }
   .list {
-    height: auto;
-    @apply flex flex-col;
+    @apply flex flex-col h-auto;
   }
   .item:nth-child(1) {
     @apply mt-14;
@@ -137,4 +145,19 @@ html.dark {
   .btn {
     @apply block;
   }
+}
+
+.custom-img {
+  object-fit: contain;
+  width: 80% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
+.unset-img {
+  margin: 0 auto;
+  width: 80%;
+}
+.unset-img > div {
+  position: unset !important;
 }

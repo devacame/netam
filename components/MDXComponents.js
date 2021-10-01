@@ -1,5 +1,3 @@
-'use strict'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -29,9 +27,20 @@ const Heading3 = ({ children }) => {
 
   return <h3 id={id}>{children}</h3>
 }
+
+const CustomImage = ({ src, alt, children }) => {
+  return (
+    <div className='unset-img border-2 border-gray-100 rounded-sm'>
+      <Image src={src} alt={alt} layout='fill' className='custom-img'>
+        {children}
+      </Image>
+    </div>
+  )
+}
+
 export const components = {
   a: Anchor,
-  Image,
+  img: CustomImage,
   h2: Heading2,
   h3: Heading3,
 }
