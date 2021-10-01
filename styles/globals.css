@@ -92,7 +92,7 @@ html.dark {
 }
 
 .toc {
-  @apply pl-3 pr-3 pt-1 pb-1 justify-center border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
+  @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
 }
 
 .toc-list {
@@ -152,9 +152,11 @@ html.dark {
   width: 80% !important;
   position: relative !important;
   height: unset !important;
+  z-index: 1 !important;
 }
 
 .unset-img {
+  position: relative;
   margin: 0 auto;
   width: 80%;
 }

@@ -27,7 +27,7 @@ export default function Nav() {
         <LOGO class={'w-10 h-10'} />
       </button>
       {toggleMenu && (
-        <div className='list lg:sticky lg:top-0'>
+        <div className='list z-50 lg:sticky lg:top-0'>
           <div className='flex flex-col justify-center items-center'>
             <h1 className='text-black dark:text-white'>VESOC</h1>
             <a
