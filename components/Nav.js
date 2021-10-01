@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import LOGO from '@/components/LOGO'
 import { GoMarkGithub } from 'react-icons/go'
+import Search from '@/components/Search'
 
 export default function Nav() {
   const [toggleMenu, setToggleMenu] = useState(false)
@@ -28,7 +29,6 @@ export default function Nav() {
       {toggleMenu && (
         <div className='list lg:sticky lg:top-0'>
           <div className='flex flex-col justify-center items-center'>
-            <LOGO class={'w-20 h-20'} />
             <h1 className='text-black dark:text-white'>VESOC</h1>
             <a
               href='https://www.github.com/VESOC'
@@ -39,6 +39,7 @@ export default function Nav() {
               <GoMarkGithub />
             </a>
           </div>
+          <Search />
           <div className='item'>
             <Link href='/'>
               <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>

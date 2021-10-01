@@ -16,8 +16,10 @@ module.exports = {
       backgroundColor: {
         'lightBlue': '#548CA8',
         'light': '#F9F9F9',
+        'lightSearch': '#FEFBF3',
         'dark': '#1A1A1D',
         'darkBody': '#18181b',
+        'darkSearch': '#323232',
       },
       backgroundImage: (theme) => ({
         '404': "url('/backgrounds/404.svg')",
