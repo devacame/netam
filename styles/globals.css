@@ -73,19 +73,6 @@ html.dark {
     scrollbar-width: none; /* Firefox */
 }
 
-.skip-nav {
-    height: 30px;
-    left: 50%;
-    padding: 8px;
-    position: absolute;
-    transform: translateY(-200%);
-    transition: transform 0.3s;
-}
-
-.skip-nav:focus {
-    transform: translateY(0%);
-}
-
 .toc {
     @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
 }
@@ -152,7 +139,7 @@ html.dark {
 
 .unset-img {
     position: relative;
-    margin: 0 auto;
+    margin: 5px auto 10px auto;
     width: 70%;
 }
 .unset-img > div {

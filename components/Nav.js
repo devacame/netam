@@ -23,6 +23,9 @@ export default function Nav() {
 
     return (
         <nav className='nav'>
+            <a href='#skip' className='sr-only focus:not-sr-only'>
+                Skip to content
+            </a>
             <button className='btn' onClick={() => setToggleMenu(!toggleMenu)}>
                 <LOGO class={'w-10 h-10'} />
             </button>
