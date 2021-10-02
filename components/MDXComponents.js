@@ -18,7 +18,9 @@ const Anchor = (props) => {
 }
 
 const Heading2 = ({ children }) => {
-    const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
+    const id = children
+        .replace(/[\[\]$&+,:;=?@#| '<>.^*()%!-]/g, '-')
+        .toLowerCase()
 
     return (
         <h2 id={id} className='h2'>
@@ -28,7 +30,9 @@ const Heading2 = ({ children }) => {
 }
 
 const Heading3 = ({ children }) => {
-    const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
+    const id = children
+        .replace(/[\[\]$&+,:;=?@#| '<>.^*()%!-]/g, '-')
+        .toLowerCase()
 
     return (
         <h3 id={id} className='h3'>

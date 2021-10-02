@@ -16,8 +16,7 @@ export default function ToC({}) {
             .querySelector(
                 '#' +
                     e.target.outerText
-                        .replace(/ /g, '-')
-                        .replace(/\./g, '-')
+                        .replace(/[\[\]$&+,:;=?@#| '<>.^*()%!-]/g, '-')
                         .toLowerCase()
             )
             .scrollIntoView()
