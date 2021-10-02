@@ -29,7 +29,13 @@ export default function Nav() {
             {toggleMenu && (
                 <div className='list z-50 lg:sticky lg:top-0'>
                     <div className='flex flex-col justify-center items-center'>
-                        <h1 className='text-black dark:text-white'>VESOC</h1>
+                        <Link href='/'>
+                            <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
+                                <h1 className='text-black dark:text-white'>
+                                    VESOC
+                                </h1>
+                            </a>
+                        </Link>
                         <a
                             href='https://www.github.com/VESOC'
                             target='_blank'
@@ -40,13 +46,6 @@ export default function Nav() {
                         </a>
                     </div>
                     <Search />
-                    <div className='item'>
-                        <Link href='/'>
-                            <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
-                                Home
-                            </a>
-                        </Link>
-                    </div>
                     <div className='item'>
                         <Link href='/blog'>
                             <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
