@@ -14,7 +14,8 @@ export default function Post({ meta, content }) {
         <BlogLayout meta={meta}>
             <h1>{meta.title}</h1>
             <p className='text-center text-black dark:text-white'>
-                {meta.date} | {meta.readingTime}분
+                {meta.date} |{' '}
+                <span className='text-blue-300'>{meta.readingTime}</span>분
             </p>
             {renderToC && <ToC />}
             <MDXRemote {...content} components={components} />
