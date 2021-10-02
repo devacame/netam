@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import { getHeadings } from '@/lib/toc'
 
 export default function ToC({}) {
-    let headings = useRef(getHeadings())
+    let headings = getHeadings()
     const [open, setOpen] = useState(false)
     const toggleDropdown = () => {
         setOpen(!open)
@@ -37,7 +37,7 @@ export default function ToC({}) {
             {open && (
                 <div className='toc dark:bg-dark bg-light'>
                     <ul className='toc-list'>
-                        {headings.current.map((heading) => (
+                        {headings.map((heading) => (
                             <li key={heading.id}>
                                 <Link href={`#${heading.id}`}>
                                     <a
