@@ -5,161 +5,161 @@
 @tailwind base;
 
 @layer base {
-  h1 {
-    @apply lg:text-3xl text-2xl m-2;
-    color: #27a1b9;
-  }
-  h2 {
-    @apply lg:text-2xl text-xl m-2;
-    color: #41b19c;
-  }
-  h3 {
-    @apply lg:text-xl text-lg m-2;
-    color: #916bbf;
-  }
-  a {
-    @apply text-lightBlue;
-  }
-  a:hover {
-    @apply text-blue-300;
-  }
-  p {
-    @apply text-baseColor text-base leading-normal mb-1;
-  }
-  ul {
-    @apply list-disc list-outside;
-  }
-  ol {
-    @apply list-decimal list-outside;
-  }
-  em,
-  i {
-    @apply text-red-400 dark:text-red-200;
-  }
-  b,
-  strong {
-    @apply font-extrabold;
-  }
-  code {
-    @apply select-all;
-  }
-  article {
-    @apply whitespace-pre;
-  }
+    h1 {
+        @apply lg:text-3xl text-2xl m-2;
+        color: #27a1b9;
+    }
+    h2 {
+        @apply lg:text-2xl text-xl m-2;
+        color: #41b19c;
+    }
+    h3 {
+        @apply lg:text-xl text-lg m-2;
+        color: #916bbf;
+    }
+    a {
+        @apply text-lightBlue;
+    }
+    a:hover {
+        @apply text-blue-300;
+    }
+    p {
+        @apply text-baseColor text-base leading-normal mb-1;
+    }
+    ul {
+        @apply list-disc list-outside;
+    }
+    ol {
+        @apply list-decimal list-outside;
+    }
+    em,
+    i {
+        @apply text-red-400 dark:text-red-200;
+    }
+    b,
+    strong {
+        @apply font-extrabold;
+    }
+    code {
+        @apply select-all;
+    }
+    article {
+        @apply whitespace-pre;
+    }
 }
 
 @tailwind components;
 @tailwind utilities;
 
 html {
-  font-family: Spoqa Han Sans Neo;
+    font-family: Spoqa Han Sans Neo;
 }
 
 html.light {
-  background-color: #f6f6f6;
+    background-color: #f6f6f6;
 }
 
 html.dark {
-  background-color: #121212;
+    background-color: #121212;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Hide scrollbar for IE, Edge add Firefox */
 .scrollbar-hidden {
-  -ms-overflow-style: none;
-  scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
 }
 
 .skip-nav {
-  height: 30px;
-  left: 50%;
-  padding: 8px;
-  position: absolute;
-  transform: translateY(-200%);
-  transition: transform 0.3s;
+    height: 30px;
+    left: 50%;
+    padding: 8px;
+    position: absolute;
+    transform: translateY(-200%);
+    transition: transform 0.3s;
 }
 
 .skip-nav:focus {
-  transform: translateY(0%);
+    transform: translateY(0%);
 }
 
 .dropdown {
-  height: auto;
-  backdrop-filter: blur(1.5rem) opacity(0.5);
+    height: auto;
+    backdrop-filter: blur(1.5rem) opacity(0.5);
 }
 
 .toc {
-  @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
+    @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
 }
 
 .toc-list {
-  @apply flex flex-col list-none top-0;
+    @apply flex flex-col list-none top-0;
 }
 
 .toc-item {
-  @apply text-gray-700 dark:text-white text-sm;
+    @apply text-gray-700 dark:text-white text-sm;
 }
 
 .remark-highlight {
-  @apply overflow-auto w-full text-base;
+    @apply overflow-auto w-full text-base;
 }
 
 .nav {
-  @apply w-1/6 bg-light dark:bg-dark;
+    @apply w-1/6 bg-light dark:bg-dark;
 }
 
 .list {
-  @apply flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark;
+    @apply flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark;
 }
 
 .item {
-  font-size: 1.75rem;
+    font-size: 1.75rem;
 }
 
 .btn {
-  @apply hidden absolute h-full my-auto left-3 cursor-pointer;
+    @apply hidden absolute h-full my-auto left-3 cursor-pointer;
 }
 
 @media screen and (max-width: 1024px) {
-  .dropdown {
-    @apply hidden;
-  }
-  .toc {
-    @apply hidden;
-  }
-  .nav {
-    @apply fixed top-0 w-full h-14 bg-light dark:bg-dark;
-  }
-  .list {
-    @apply flex flex-col h-auto;
-  }
-  .item:nth-child(1) {
-    @apply mt-14;
-  }
-  .item {
-    @apply w-full text-center mr-0 pl-5 pr-5;
-  }
-  .btn {
-    @apply block;
-  }
+    .dropdown {
+        @apply hidden;
+    }
+    .toc {
+        @apply hidden;
+    }
+    .nav {
+        @apply fixed z-50 top-0 w-full h-14 bg-light dark:bg-dark;
+    }
+    .list {
+        @apply flex flex-col h-auto;
+    }
+    .item:nth-child(1) {
+        @apply mt-14;
+    }
+    .item {
+        @apply w-full text-center mr-0 pl-5 pr-5;
+    }
+    .btn {
+        @apply block;
+    }
 }
 
 .custom-img {
-  object-fit: contain;
-  width: 70% !important;
-  position: relative !important;
-  height: unset !important;
-  z-index: 1 !important;
+    object-fit: contain;
+    width: 70%;
+    position: relative !important;
+    height: unset !important;
+    z-index: 1 !important;
 }
 
 .unset-img {
-  position: relative;
-  margin: 0 auto;
-  width: 70%;
+    position: relative;
+    margin: 0 auto;
+    width: 70%;
 }
 .unset-img > div {
-  position: unset !important;
+    position: unset !important;
 }
