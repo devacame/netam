@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
-import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { getHeadings } from '@/lib/toc'
 
 export default function ToC({}) {
@@ -22,16 +22,13 @@ export default function ToC({}) {
             .scrollIntoView()
     }
     return (
-        <div className='dropdown sticky z-40 flex flex-col justify-center top-0 w-full bg-light dark:bg-dark'>
-            <button
-                className='flex flex-row gap-x-2 justify-center items-center'
-                onClick={toggleDropdown}
-            >
-                <h3 className='text-black dark:text-white'>
-                    Table of Contents
-                </h3>
-                {!open && <RiArrowDownSLine />}
-                {open && <RiArrowUpSLine />}
+        <div
+            className={`z-50 fixed right-0 top-20 flex flex-row justify-center items-center rounded-lg bg-light dark:bg-dark
+            ${open ? 'w-auto h-auto' : 'w-5 h-36'}`}
+        >
+            <button className='w-5' onClick={toggleDropdown}>
+                {!open && <RiArrowLeftSLine />}
+                {open && <RiArrowRightSLine />}
             </button>
             {open && (
                 <div className='toc dark:bg-dark bg-light'>
