@@ -4,7 +4,7 @@ export default function SearchResults({ results, setSearchTerm }) {
     if (results.length === 0) return <></>
 
     return (
-        <div className='absolute top-14 lg:left-5 border-4 border-gray-500 lg:w-max w-auto text-black bg-lightSearch dark:bg-darkSearch dark:text-white rounded-2xl h-72 overflow-y-auto scrollbar-hidden'>
+        <div className='absolute top-14 lg:left-5 border-4 border-gray-500 lg:w-max w-auto text-black bg-lightPoint dark:bg-darkPoint dark:text-white rounded-2xl h-72 overflow-y-auto scrollbar-hidden'>
             <div className='p-7'>
                 <h2 className='mb-3'>결과 {results.length}개</h2>
                 {results.map((result, index) => (
