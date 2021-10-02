@@ -3,7 +3,7 @@ import Nav from '@/components/Nav'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
 import { useState, useEffect } from 'react'
 
-export default function BaseLayout({ children, meta }) {
+export default function BlogLayout({ children, meta }) {
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])
     return (
