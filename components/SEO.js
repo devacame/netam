@@ -12,13 +12,13 @@ export default function SEO({ meta }) {
             <meta name='robots' content='follow, index' />
             <link
                 rel='canonical'
-                href={`${process.env.BASE_URL}${router.asPath}`}
+                href={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
             />
             <title>{meta?.title}</title>
             <meta content={meta?.description} name='description' />
             <meta
                 property='og:url'
-                content={`${process.env.BASE_URL}${router.asPath}`}
+                content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
             />
             <meta
                 property='og:type'
@@ -33,7 +33,7 @@ export default function SEO({ meta }) {
             {meta?.image && (
                 <meta
                     property='og:image'
-                    content={`${process.env.BASE_URL}${meta?.image}`}
+                    content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta?.image}`}
                 />
             )}
             {meta?.date && (
