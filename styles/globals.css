@@ -86,11 +86,6 @@ html.dark {
     transform: translateY(0%);
 }
 
-.dropdown {
-    height: auto;
-    backdrop-filter: blur(1.5rem) opacity(0.5);
-}
-
 .toc {
     @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
 }
