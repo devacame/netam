@@ -1,6 +1,5 @@
 import BlogLayout from '@/components/BlogLayout'
 import { getPosts, getPost } from '@/lib/markdown'
-import { getHeadings } from '@/lib/toc'
 import { MDXRemote } from 'next-mdx-remote'
 import { components } from '@/components/MDXComponents'
 import ToC from '@/components/ToC'
