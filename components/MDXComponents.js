@@ -20,13 +20,21 @@ const Anchor = (props) => {
 const Heading2 = ({ children }) => {
     const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
 
-    return <h2 id={id}>{children}</h2>
+    return (
+        <h2 id={id} className='h2'>
+            {children}
+        </h2>
+    )
 }
 
 const Heading3 = ({ children }) => {
     const id = children.replace(/ /g, '-').replace(/\./g, '-').toLowerCase()
 
-    return <h3 id={id}>{children}</h3>
+    return (
+        <h3 id={id} className='h3'>
+            {children}
+        </h3>
+    )
 }
 
 const CustomImage = ({ src, alt, children }) => {
