@@ -27,7 +27,7 @@ export default function Nav() {
                 Skip to content
             </a>
             <button
-                className='nav-btn md:block'
+                className='lg:hidden nav-btn'
                 onClick={() => setToggleMenu(!toggleMenu)}
             >
                 <LOGO class={'w-10 h-10'} />
