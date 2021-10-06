@@ -6,6 +6,10 @@ module.exports = {
     ],
     darkMode: 'class',
     theme: {
+        screens: {
+            'md': { 'max': '1023px' },
+            'lg': { 'min': '1024px' },
+        },
         extend: {
             textColor: {
                 'bluePrime': '#334257',

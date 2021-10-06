@@ -67,14 +67,13 @@ html.dark {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge add Firefox */
 .scrollbar-hidden {
     -ms-overflow-style: none;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 }
 
 .toc {
-    @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto;
+    @apply pl-3 pr-3 pt-1 pb-1 border-dashed border-4 border-gray-400 rounded-md top-2 bottom-2 mx-auto bg-light dark:bg-dark;
 }
 
 .toc-list {
@@ -85,48 +84,20 @@ html.dark {
     @apply text-gray-700 dark:text-white text-sm;
 }
 
-.remark-highlight {
-    @apply overflow-auto w-full text-base;
-}
-
 .nav {
-    @apply w-1/6 bg-light dark:bg-dark;
+    @apply fixed lg:relative w-full lg:w-1/5 top-0 h-14 lg:h-auto z-50 bg-light dark:bg-dark;
 }
 
 .list {
-    @apply flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark;
+    @apply flex flex-col sticky top-0 font-bold p-2 gap-y-2 bg-light dark:bg-dark;
 }
 
 .item {
-    font-size: 1.75rem;
+    @apply lg:text-[1.75rem] w-full md:text-center md:mr-0 md:pl-5 md:pr-5;
 }
 
-.btn {
-    @apply hidden absolute h-full my-auto left-3 cursor-pointer;
-}
-
-@media screen and (max-width: 1024px) {
-    .dropdown {
-        @apply hidden;
-    }
-    .toc {
-        @apply hidden;
-    }
-    .nav {
-        @apply fixed z-50 top-0 w-full h-14 bg-light dark:bg-dark;
-    }
-    .list {
-        @apply flex flex-col h-auto;
-    }
-    .item:nth-child(1) {
-        @apply mt-14;
-    }
-    .item {
-        @apply w-full text-center mr-0 pl-5 pr-5;
-    }
-    .btn {
-        @apply block;
-    }
+.nav-btn {
+    @apply absolute h-full left-3 my-auto;
 }
 
 .custom-img {

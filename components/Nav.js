@@ -26,11 +26,14 @@ export default function Nav() {
             <a href='#skip' className='sr-only focus:not-sr-only'>
                 Skip to content
             </a>
-            <button className='btn' onClick={() => setToggleMenu(!toggleMenu)}>
+            <button
+                className='nav-btn md:block'
+                onClick={() => setToggleMenu(!toggleMenu)}
+            >
                 <LOGO class={'w-10 h-10'} />
             </button>
             {toggleMenu && (
-                <div className='list z-50 lg:sticky lg:top-0'>
+                <div className='lg:sticky lg:top-0 flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark z-50'>
                     <div className='flex flex-col justify-center items-center'>
                         <Link href='/'>
                             <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
