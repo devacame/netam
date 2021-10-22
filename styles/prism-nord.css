@@ -1,5 +1,5 @@
 .remark-highlight {
-    @apply overflow-auto w-full text-base;
+    @apply overflow-auto relative w-full text-base;
 }
 
 code[class*='language-'],

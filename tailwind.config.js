@@ -19,6 +19,7 @@ module.exports = {
                 'light': '#F9F9F9',
             },
             backgroundColor: {
+                'active': true,
                 'lightBlue': '#548CA8',
                 'light': '#F9F9F9',
                 'lightPoint': '#FEFBF3',
