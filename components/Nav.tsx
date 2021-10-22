@@ -30,7 +30,7 @@ export default function Nav() {
                 className='lg:hidden nav-btn'
                 onClick={() => setToggleMenu(!toggleMenu)}
             >
-                <LOGO class={'w-10 h-10'} />
+                <LOGO customClass={'w-10 h-10'} />
             </button>
             {toggleMenu && (
                 <div className='lg:sticky lg:top-0 flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark z-50'>

@@ -1,9 +1,19 @@
+interface headingInfo {
+    title: string,
+    id: string,
+}
+
+interface nestedHeadingInfo extends headingInfo {
+    items: headingInfo[]
+}
+
 export const getHeadings = () => {
-    const headingElements = Array.from(document.querySelectorAll('.h2, .h3'))
-    const nestedHeadings = []
+    const headingElements: HTMLHeadingElement[] = Array.from(document.querySelectorAll('.h2, .h3'))
+    const nestedHeadings: nestedHeadingInfo[] = []
 
     headingElements.forEach((heading) => {
-        const { innerText: title, id } = heading
+        const title:string = heading.innerText
+        const id:string = heading.id
 
         if (heading.nodeName === 'H2') {
             nestedHeadings.push({ id, title, items: [] })

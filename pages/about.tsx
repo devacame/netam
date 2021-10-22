@@ -7,13 +7,14 @@ import {
   SiNodeDotJs,
 } from 'react-icons/si'
 import BaseLayout from '@/components/BaseLayout'
+import { MetaData } from '@/lib/types'
 
 export default function About() {
-  const meta = {
+  const meta: MetaData = {
     title: 'About Coder38611 | Coder38611은?',
     description:
       'About Coder38611, who am I, what can I do, what I want to do | Coder38611에 대하여, 누구인지, 무엇을 할 수 있는지',
-    image: `${process.env.BASE_URL}/icons/coder38611.png`,
+    image: '/icons/coder38611.png',
   }
   return (
     <BaseLayout meta={meta}>

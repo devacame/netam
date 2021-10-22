@@ -14,7 +14,7 @@ export default function Search() {
     }
 
     useEffect(() => {
-        const getResults = async () => {
+        (async () => {
             if (!openResult) return
             const keyword = searchTerm.trim()
             if (keyword === '') {
@@ -24,9 +24,7 @@ export default function Search() {
                 const { results } = await res.json()
                 setSearchResults(results)
             }
-        }
-
-        getResults()
+        })()
     }, [searchTerm, openResult])
 
     return (
@@ -39,10 +37,10 @@ export default function Search() {
                     className='relative bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onBlur={(e) => {
+                    onBlur={() => {
                         toggleResults()
                     }}
-                    onFocus={(e) => {
+                    onFocus={() => {
                         toggleResults()
                     }}
                     autoComplete='off'

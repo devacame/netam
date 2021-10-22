@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { MetaData } from '@/lib/types'
 
-export default function SEO({ meta }) {
+interface PageProps {
+    meta: MetaData
+}
+
+export default function SEO({ meta }: PageProps) {
     const router = useRouter()
     return (
         <Head>

@@ -1,6 +1,7 @@
 import Post from '@/components/Post'
+import {Dispatch, SetStateAction} from 'react'
 
-export default function SearchResults({ results, setSearchTerm }) {
+export default function SearchResults({ results, setSearchTerm }: {results: never[], setSearchTerm:Dispatch<SetStateAction<string>>}) {
     if (results.length === 0) return <></>
 
     return (

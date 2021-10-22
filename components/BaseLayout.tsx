@@ -1,9 +1,15 @@
 import SEO from '@/components/SEO'
 import Nav from '@/components/Nav'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactNode } from 'react'
+import { MetaData } from '@/lib/types'
 
-export default function BaseLayout({ children, meta }) {
+interface PageProps {
+    children: ReactNode,
+    meta: MetaData
+}
+
+export default function BaseLayout({ children, meta }: PageProps) {
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])
     return (

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import SEO from '@/components/SEO'
+import { MetaData } from '@/lib/types'
 
 export default function Error404() {
-    const meta = {
+    const meta: MetaData = {
         title: '404 Error | 404 에러',
     }
     return (

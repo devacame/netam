@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import SEO from '@/components/SEO'
+import { MetaData } from '@/lib/types'
 
 export default function Error500() {
-    const meta: { title: String } = {
+    const meta: MetaData = {
         title: '500 Error | 500 에러',
     }
     return (

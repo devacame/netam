@@ -1,6 +1,6 @@
 import { useTheme } from 'next-themes'
 
-export default function ThemeToggleBtn({ mounted }) {
+export default function ThemeToggleBtn({ mounted }: {mounted: boolean}) {
     const { resolvedTheme, setTheme } = useTheme()
     return (
         <button

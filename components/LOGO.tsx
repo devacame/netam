@@ -1,4 +1,4 @@
-export default function LOGO(props) {
+export default function LOGO({customClass}: {customClass: string}) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -6,7 +6,7 @@ export default function LOGO(props) {
             height='2000'
             fill='none'
             viewBox='0 0 2000 2000'
-            className={`rounded-full ${props.class}`}
+            className={`rounded-full ${customClass}`}
         >
             <path fill='#fff' d='M0 0h2000v2000H0z' />
             <path fill='#16302D' d='M0 0h2000v2000H0V0z' />

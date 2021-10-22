@@ -1,11 +1,17 @@
 import BlogLayout from '@/components/BlogLayout'
 import { getPosts, getPost } from '@/lib/markdown'
-import { MDXRemote } from 'next-mdx-remote'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { components } from '@/components/MDXComponents'
 import ToC from '@/components/ToC'
 import { useEffect, useState } from 'react'
+import { BlogMeta } from '@/lib/types'
+import { GetStaticProps, GetStaticPaths } from 'next'
+interface PageProps {
+    meta: BlogMeta
+    content: MDXRemoteSerializeResult<Record<string, unknown>>
+}
 
-export default function Post({ meta, content }) {
+export default function Post({ meta, content }: PageProps) {
     const [renderToC, setRenderToC] = useState(false)
     useEffect(() => {
         setRenderToC(true)
@@ -23,7 +29,7 @@ export default function Post({ meta, content }) {
     )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const posts = await getPosts()
     const paths = posts.map((path) => ({
         params: {
@@ -37,8 +43,11 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params: { slug } }) {
-    const { meta, content } = await getPost(slug)
+export const getStaticProps: GetStaticProps = async ({params}) => {
+    if (typeof params!.slug !== 'string') {
+        return {notFound: true}
+    }
+    const { meta, content } = await getPost(params!.slug)
     return {
         props: {
             meta,

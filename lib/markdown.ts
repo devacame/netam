@@ -14,14 +14,13 @@ export async function getPosts() {
     return paths
 }
 
-export async function getPost(slug) {
+export async function getPost(slug: string) {
     const source = readFileSync(
         join(process.cwd(), 'posts', `${slug}.mdx`),
         'utf8'
     )
     const { data, content: markdown } = matter(source)
     const content = await serialize(markdown, {
-        scope: data,
         mdxOptions: {
             remarkPlugins: [
                 remarkGfm,
@@ -32,7 +31,7 @@ export async function getPost(slug) {
             rehypePlugins: [rehypeKatex],
         },
     })
-    const readingTime = Math.ceil(source.match(/ /g).length / 200)
+    const readingTime = Math.ceil(source.match(/ /g)!.length / 200)
     return {
         meta: {
             ...data,
