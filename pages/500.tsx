@@ -2,7 +2,7 @@ import Link from 'next/link'
 import SEO from '@/components/SEO'
 
 export default function Error500() {
-    const meta = {
+    const meta: { title: String } = {
         title: '500 Error | 500 에러',
     }
     return (
