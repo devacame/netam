@@ -3,8 +3,8 @@ import {
   SiFlutter,
   SiPython,
   SiJavascript,
-  SiNextDotJs,
-  SiNodeDotJs,
+  SiNextdotjs,
+  SiNodedotjs,
 } from 'react-icons/si'
 import BaseLayout from '@/components/BaseLayout'
 import { MetaData } from '@/lib/types'
@@ -38,10 +38,10 @@ export default function About() {
           <h3>기술:</h3>
           <div className='flex flex-row justify-evenly px-5'>
             <div className='px-10 py-3'>
-              <SiNodeDotJs size='40' color='#73BF4F' />
+              <SiNodedotjs size='40' color='#73BF4F' />
             </div>
             <div className='px-10 py-3'>
-              <SiNextDotJs size='40' color='black' />
+              <SiNextdotjs size='40' color='black' />
             </div>
             <div className='px-10 py-3'>
               <SiFlutter size='40' color='#4ECFFC' />

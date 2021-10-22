@@ -25,7 +25,7 @@ async function Search(req: NextApiRequest, res: NextApiResponse) {
         })
     }
 
-    let results: string[]
+    let results: MetaData[]
     if (typeof req.query.q === 'string') {
         const query: string = req.query.q
         results = posts
@@ -38,7 +38,11 @@ async function Search(req: NextApiRequest, res: NextApiResponse) {
             )
             .map(({ data }: {data: MetaData}) => data)
             .sort((a: MetaData, b: MetaData) => {
-                return new Date(b.date) - new Date(a.date)
+                if (process.env.NODE_ENV === 'production') {
+                    return +b.date! - +a.date!
+                } else {
+                    return new Date(b.date) - new Date(a.date)
+                }
             })
     } else {
         results = []
