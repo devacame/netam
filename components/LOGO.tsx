@@ -1,4 +1,4 @@
-export default function LOGO({customClass}: {customClass: string}) {
+export default function LOGO({ customClass }: { customClass: string }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {FiCopy} from 'react-icons/fi'
+import { FiCopy } from 'react-icons/fi'
 
 const Anchor = (props) => {
     const href = props.href
@@ -52,7 +52,7 @@ const CustomImage = ({ src, alt, children }) => {
     )
 }
 
-const CustomCode = ({children}) => {
+const CustomCode = ({ children }) => {
     const id = Date.now().toString()
     const copyCode = () => {
         const code = document.getElementById(id).innerText
@@ -60,7 +60,10 @@ const CustomCode = ({children}) => {
     }
     return (
         <div id={id}>
-            <button className='absolute w-7 h-7 top-5 right-5 border-2 border-gray-700 active:border-green-200 rounded-md' onClick={copyCode}>
+            <button
+                className='absolute w-7 h-7 top-5 right-5 border-2 border-gray-700 active:border-green-200 rounded-md'
+                onClick={copyCode}
+            >
                 <FiCopy className='w-5 h-5 mx-auto my-auto' />
             </button>
             {children}
@@ -73,5 +76,5 @@ export const components = {
     img: CustomImage,
     h2: Heading2,
     h3: Heading3,
-    code: CustomCode
+    code: CustomCode,
 }

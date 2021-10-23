@@ -5,7 +5,7 @@ import { useState, useEffect, ReactNode } from 'react'
 import { BlogMeta } from '@/lib/types'
 
 interface PageProps {
-    children: ReactNode,
+    children: ReactNode
     meta: BlogMeta
 }
 
@@ -13,7 +13,7 @@ export default function BlogLayout({ children, meta }: PageProps) {
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])
     return (
-        <div>
+        <>
             <SEO meta={meta} />
             <div className='flex flex-row'>
                 <Nav />
@@ -25,6 +25,6 @@ export default function BlogLayout({ children, meta }: PageProps) {
                 </main>
             </div>
             <ThemeToggleBtn mounted={mounted} />
-        </div>
+        </>
     )
 }

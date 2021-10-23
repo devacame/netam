@@ -14,7 +14,7 @@ export default function Search() {
     }
 
     useEffect(() => {
-        (async () => {
+        ;(async () => {
             if (!openResult) return
             const keyword = searchTerm.trim()
             if (keyword === '') {

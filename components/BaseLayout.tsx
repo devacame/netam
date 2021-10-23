@@ -5,7 +5,7 @@ import { useState, useEffect, ReactNode } from 'react'
 import { MetaData } from '@/lib/types'
 
 interface PageProps {
-    children: ReactNode,
+    children: ReactNode
     meta: MetaData
 }
 
