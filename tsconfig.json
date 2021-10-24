@@ -28,6 +28,7 @@
         "@/styles/*": ["styles/*"],
         "@/components/*": ["components/*"],
         "@/lib/*": ["lib/*"],
+        "@/graphql/*": ["graphql/*"],
       }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
