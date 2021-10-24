@@ -9,7 +9,7 @@ export default function Error404() {
     return (
         <div>
             <SEO meta={meta} />
-            <div className='h-screen flex flex-col place-content-center items-center bg-404'>
+            <div className='h-screen flex flex-col place-content-center items-center bg-gradient-to-tl from-indigo-200 via-red-200 to-yellow-100'>
                 <h1 className='text-9xl text-bluePrime'>404 에러</h1>
                 <h2 className='text-5xl text-gray-50 py-3'>
                     존재하지 않는 페이지입니다.

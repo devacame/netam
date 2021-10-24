@@ -27,10 +27,6 @@ module.exports = {
                 'darkBody': '#18181b',
                 'darkPoint': '#323232',
             },
-            backgroundImage: (theme) => ({
-                '404': "url('/backgrounds/404.svg')",
-                '500': "url('/backgrounds/500.svg')",
-            }),
             fontFamily: {
                 body: ['SpoqaHanSansNeo'],
             },
