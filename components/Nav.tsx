@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import LOGO from '@/components/LOGO'
 import { GoMarkGithub } from 'react-icons/go'
 import Search from '@/components/Search'
+import AuthenticateBtn from '@/components/AuthenticateBtn'
 
 export default function Nav() {
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -42,14 +43,17 @@ export default function Nav() {
                                 </h1>
                             </a>
                         </Link>
-                        <a
-                            href='https://www.github.com/VESOC'
-                            target='_blank'
-                            rel='noreferrer noopener'
-                            className='text-black dark:text-white'
-                        >
-                            <GoMarkGithub />
-                        </a>
+                        <div className='flex flex-row gap-x-3 justify-center items-center'>
+                            <a
+                                href='https://www.github.com/VESOC'
+                                target='_blank'
+                                rel='noreferrer noopener'
+                                className='text-black dark:text-white'
+                            >
+                                <GoMarkGithub />
+                            </a>
+                            <AuthenticateBtn />
+                        </div>
                     </div>
                     <Search />
                     <div className='item'>
