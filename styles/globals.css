@@ -85,7 +85,7 @@ html.dark {
 }
 
 .nav {
-    @apply fixed lg:relative w-full lg:w-1/5 top-0 h-14 lg:h-auto z-50 bg-light dark:bg-dark;
+    @apply fixed lg:relative md:w-full lg:w-1/5 top-0 md:h-14 lg:h-auto z-50 bg-light dark:bg-dark;
 }
 
 .list {
