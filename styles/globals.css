@@ -1,4 +1,4 @@
-@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import 'SpoqaHanSansNeo.css';
 @import 'prism-nord.css';
 @import url('https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css');
 
