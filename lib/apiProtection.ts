@@ -3,7 +3,6 @@ import { ApiFunction } from '@/lib/types'
 
 const protectAPI = (handler: ApiFunction) => {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-        console.log(process.env.NODE_ENV)
         if (
             new URL(req.headers.referer!).origin !==
             process.env.NEXT_PUBLIC_BASE_URL
