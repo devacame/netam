@@ -15,7 +15,7 @@ export default function Error404() {
                     존재하지 않는 페이지입니다.
                 </h2>
                 <Link href='/'>
-                    <a className='bg-gray-50 text-gray-800 hover:text-gray-400 p-3 rounded-md'>
+                    <a className='bg-gray-900 text-gray-200 hover:bg-gray-600 hover:text-gray-200 p-3 rounded-md'>
                         메인 화면으로 돌아가기
                     </a>
                 </Link>
