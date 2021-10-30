@@ -10,7 +10,7 @@ export interface MetaData {
 
 export interface BlogMeta extends MetaData {
     readingTime: number
-    slug: string
+    id: string
 }
 
 export type ApiFunction = (req: NextApiRequest, res: NextApiResponse) => any
