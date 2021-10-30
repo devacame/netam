@@ -6,6 +6,7 @@ import {
     stringArg,
     mutationType,
     booleanArg,
+    intArg,
 } from 'nexus'
 
 export const Post = objectType({
@@ -18,6 +19,7 @@ export const Post = objectType({
         t.field('date', { type: 'Date' })
         t.list.string('category')
         t.string('series')
+        t.int('readingTime')
         t.string('content')
         t.boolean('published')
     },
@@ -76,6 +78,7 @@ export const PostMutation = mutationType({
                 category: nonNull(list(stringArg())),
                 series: nonNull(stringArg()),
                 date: nonNull(stringArg()),
+                readingTime: nonNull(intArg()),
                 content: nonNull(stringArg()),
                 published: nonNull(booleanArg()),
             },
@@ -89,6 +92,7 @@ export const PostMutation = mutationType({
                         category: args.category,
                         series: args.series,
                         date: args.date,
+                        readingTime: args.readingTime,
                         content: args.content,
                         published: args.published,
                     },
@@ -105,6 +109,7 @@ export const PostMutation = mutationType({
                 category: nonNull(list(stringArg())),
                 series: nonNull(stringArg()),
                 date: nonNull(stringArg()),
+                readingTime: nonNull(intArg()),
                 content: nonNull(stringArg()),
                 published: nonNull(booleanArg()),
             },
@@ -120,6 +125,7 @@ export const PostMutation = mutationType({
                         category: args.category,
                         series: args.series,
                         date: args.date,
+                        readingTime: args.readingTime,
                         content: args.content,
                         published: args.published,
                     },

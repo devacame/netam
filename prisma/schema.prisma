@@ -15,6 +15,7 @@ model Post {
     category    String[]
     coverImage  String
     series      String
+    readingTime Int
     content     String
     published   Boolean  @default(false)
 }
