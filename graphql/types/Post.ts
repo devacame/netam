@@ -44,8 +44,9 @@ export const PostQuery = queryType({
                         id: true,
                         title: true,
                         description: true,
-                        coverImage: true,
                         date: true,
+                        series: true,
+                        category: true,
                     },
                 })
             },
