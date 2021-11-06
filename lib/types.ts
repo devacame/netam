@@ -5,6 +5,7 @@ export interface MetaData {
     description?: string
     image?: string
     date?: Date
+    series?: string
     category?: string[]
 }
 
