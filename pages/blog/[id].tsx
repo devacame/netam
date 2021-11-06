@@ -5,7 +5,7 @@ import ToC from '@/components/ToC'
 import { useEffect, useState } from 'react'
 import { BlogMeta } from '@/lib/types'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { getPaths, getPost } from '@/lib/markdown'
+import { getPaths, getPost } from '@/lib/PostData'
 interface PageProps {
     meta: BlogMeta
     content: MDXRemoteSerializeResult<Record<string, unknown>>
