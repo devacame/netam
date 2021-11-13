@@ -52,7 +52,7 @@ export const PostQuery = queryType({
             },
         })
         t.field('post', {
-            type: nonNull('Post'),
+            type: 'Post',
             args: {
                 id: nonNull(stringArg()),
             },
