@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { BlogMeta } from '@/lib/types'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getPaths, getPost } from '@/lib/PostData'
+import { postContent } from '@/lib/markdown'
 interface PageProps {
     meta: BlogMeta
     content: MDXRemoteSerializeResult<Record<string, unknown>>
@@ -38,7 +39,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths: Paths[] = await getPaths()
     return {
         paths,
-        fallback: false,
+        fallback: 'blocking',
     }
 }
 
@@ -46,14 +47,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (typeof params!.id !== 'string') {
         return { notFound: true }
     }
-    const { meta, serializedContent: content } = await getPost(params!.id)
-    if (meta!.published === false) {
+    const postData = await getPost(params!.id)
+    const { serializedContent } = await postContent(postData.content)
+    if (postData.metadatas?.published === false) {
         return { notFound: true }
     }
     return {
         props: {
-            meta,
-            content,
+            meta: postData.metadatas,
+            content: serializedContent,
         },
+        revalidate: 7 * 24 * 60 * 60,
     }
 }
