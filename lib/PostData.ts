@@ -39,6 +39,7 @@ export async function getPost(
                     description
                     category
                     series
+                    coverImage
                     readingTime
                     content
                     published

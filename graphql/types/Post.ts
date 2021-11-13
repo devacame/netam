@@ -70,7 +70,7 @@ export const PostQuery = queryType({
 export const PostMutation = mutationType({
     definition(t) {
         t.field('createPost', {
-            type: nonNull('Post'),
+            type: 'Post',
             args: {
                 id: nonNull(stringArg()),
                 title: nonNull(stringArg()),
@@ -84,20 +84,26 @@ export const PostMutation = mutationType({
                 published: nonNull(booleanArg()),
             },
             resolve(_parent, args, ctx) {
-                return ctx.prisma.post.create({
-                    data: {
-                        id: args.id,
-                        title: args.title,
-                        description: args.description,
-                        coverImage: args.coverImage,
-                        category: args.category,
-                        series: args.series,
-                        date: args.date,
-                        readingTime: args.readingTime,
-                        content: args.content,
-                        published: args.published,
-                    },
-                })
+                let result = ctx.prisma.post
+                    .create({
+                        data: {
+                            id: args.id,
+                            title: args.title,
+                            description: args.description,
+                            coverImage: args.coverImage,
+                            category: args.category,
+                            series: args.series,
+                            date: args.date,
+                            readingTime: args.readingTime,
+                            content: args.content,
+                            published: args.published,
+                        },
+                    })
+                    .catch((e) => {
+                        console.log(e)
+                        return null
+                    })
+                return result
             },
         })
         t.field('updatePost', {

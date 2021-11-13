@@ -15,3 +15,16 @@ export interface BlogMeta extends MetaData {
 }
 
 export type ApiFunction = (req: NextApiRequest, res: NextApiResponse) => any
+
+export interface PostFormData {
+    id: string
+    title: string
+    description: string
+    coverImage: string
+    category: string[]
+    date: string
+    series: string
+    readingTime: number
+    content: string
+    published: boolean
+}
