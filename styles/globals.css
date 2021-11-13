@@ -46,6 +46,12 @@
     article {
         @apply whitespace-pre;
     }
+    input {
+        @apply w-[90%] mx-auto;
+    }
+    label {
+        @apply ml-5;
+    }
 }
 
 @tailwind components;
