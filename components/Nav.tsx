@@ -6,18 +6,23 @@ import Search from '@/components/Search'
 import AuthenticateBtn from '@/components/AuthenticateBtn'
 
 export default function Nav() {
+    const [isLargeScreen, setIsLargeScreen] = useState(false)
     const [toggleMenu, setToggleMenu] = useState(false)
     useEffect(() => {
         if (window.matchMedia('(max-width: 1024px)').matches) {
             setToggleMenu(false)
+            setIsLargeScreen(false)
         } else {
             setToggleMenu(true)
+            setIsLargeScreen(true)
         }
         window.addEventListener('resize', function () {
             if (window.matchMedia('(min-width: 1025px)').matches) {
                 setToggleMenu(true)
+                setIsLargeScreen(true)
             } else {
                 setToggleMenu(false)
+                setIsLargeScreen(false)
             }
         })
     }, [])
@@ -27,12 +32,14 @@ export default function Nav() {
             <a href='#skip' className='sr-only focus:not-sr-only'>
                 Skip to content
             </a>
-            <button
-                className='lg:hidden nav-btn'
-                onClick={() => setToggleMenu(!toggleMenu)}
-            >
-                <LOGO customClass={'w-10 h-10'} />
-            </button>
+            {!isLargeScreen && (
+                <button
+                    className='lg:hidden nav-btn'
+                    onClick={() => setToggleMenu(!toggleMenu)}
+                >
+                    <LOGO customClass={'w-10 h-10'} />
+                </button>
+            )}
             {toggleMenu && (
                 <div className='lg:sticky lg:top-0 flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark z-50'>
                     <div className='flex flex-col justify-center items-center'>
