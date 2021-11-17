@@ -27,7 +27,7 @@ export async function getPost(
 ): Promise<{ content: string; metadatas: Partial<PostFormData> }> {
     const {
         data: {
-            post: { content, ...metadatas },
+            post: { content: encodedContent, ...metadatas },
         },
     } = await apolloClient.query({
         query: gql`
@@ -48,10 +48,14 @@ export async function getPost(
         `,
         variables: { postId: id },
     })
+    const contentBuff = Buffer.from(encodedContent, 'base64')
+    const content = contentBuff.toString('utf-8')
     return { content, metadatas }
 }
 
 export async function createPost(postData: PostFormData) {
+    const contentBuff = Buffer.from(postData.content, 'utf-8')
+    const encodedContent = contentBuff.toString('base64')
     apolloClient
         .mutate({
             mutation: gql`
@@ -92,7 +96,7 @@ export async function createPost(postData: PostFormData) {
                     }
                 }
             `,
-            variables: postData,
+            variables: { ...postData, content: encodedContent },
         })
         .catch((e) => {
             console.error(e)
@@ -100,6 +104,8 @@ export async function createPost(postData: PostFormData) {
 }
 
 export async function updatePost(postData: PostFormData) {
+    const contentBuff = Buffer.from(postData.content, 'utf-8')
+    const encodedContent = contentBuff.toString('base64')
     apolloClient
         .mutate({
             mutation: gql`
@@ -140,7 +146,7 @@ export async function updatePost(postData: PostFormData) {
                     }
                 }
             `,
-            variables: postData,
+            variables: { ...postData, content: encodedContent },
         })
         .catch((e) => {
             console.error(e)
