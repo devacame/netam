@@ -28,3 +28,12 @@ export interface PostFormData {
     content: string
     published: boolean
 }
+
+export interface searchResult {
+    id: string
+    title: string
+    description: string
+    date: string
+    category: string[]
+    series: string
+}

@@ -30,9 +30,9 @@ async function cachePostsMetaData() {
             return json.data.metadatas
         })
     const dataString =
-        'export default postData = [' +
+        'const postData = [' +
         data.map((post) => JSON.stringify(post)).join(', ') +
-        ']'
+        ']\nexport default postData'
     console.log(dataString)
     await writeFile('cache/data.js', dataString, (err) => console.log(err))
 }

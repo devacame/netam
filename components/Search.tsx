@@ -1,10 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, SetStateAction, Dispatch } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import SearchResults from '@/components/SearchResults'
+import search from '@/lib/search'
+import { searchResult } from '@/lib/types'
 
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState('')
-    const [searchResults, setSearchResults] = useState([])
+    const [searchResults, setSearchResults]: [
+        searchResult[],
+        Dispatch<SetStateAction<searchResult[]>>
+    ] = useState([] as searchResult[])
     const [openResult, setOpenResult] = useState(false)
 
     const toggleResults = () => {
@@ -20,8 +25,7 @@ export default function Search() {
             if (keyword === '') {
                 setSearchResults([])
             } else {
-                const res = await fetch(`/api/search?q=${keyword}`)
-                const { results } = await res.json()
+                const results: searchResult[] = search(keyword)
                 setSearchResults(results)
             }
         })()
