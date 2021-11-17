@@ -2,7 +2,7 @@ import { readdirSync, mkdirSync, writeFile } from 'fs'
 import fetch from 'node-fetch'
 
 async function cachePostsMetaData() {
-    const endpoint = `http://localhost:3000/api/graphql`
+    const endpoint = `${process.env.API_URL}/api/graphql`
     const query = `
         query GetPostMetaData {
             metadatas {
@@ -20,22 +20,21 @@ async function cachePostsMetaData() {
     } catch (error) {
         mkdirSync('cache')
     }
-    await fetch(endpoint, {
+    const data = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
     })
         .then((res) => res.json())
         .then((json) => {
-            writeFile(
-                'cache/data.js',
-                JSON.stringify(json.data, (err) => {
-                    if (err) throw err
-                    console.log('Post Meta Data Cached.')
-                })
-            )
+            return json.data.metadatas
         })
-        .catch((err) => console.log(err))
+    const dataString =
+        'export default postData = [' +
+        data.map((post) => JSON.stringify(post)).join(', ') +
+        ']'
+    console.log(dataString)
+    await writeFile('cache/data.js', dataString, (err) => console.log(err))
 }
 
 cachePostsMetaData()
