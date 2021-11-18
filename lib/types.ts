@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 export interface MetaData {
     title?: string
     description?: string
-    image?: string
+    coverImage?: string
     date?: Date
     series?: string
     category?: string[]
@@ -29,11 +29,24 @@ export interface PostFormData {
     published: boolean
 }
 
-export interface searchResult {
+export interface SearchResult {
     id: string
     title: string
     description: string
     date: string
     category: string[]
     series: string
+}
+
+export interface PostsQueryData {
+    posts: {
+        edges: {
+            cursor: string
+            node: BlogMeta
+        }[]
+        pageInfo: {
+            endCursor: string
+            hasNextPage: boolean
+        }
+    }
 }

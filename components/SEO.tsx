@@ -35,10 +35,12 @@ export default function SEO({ meta }: PageProps) {
             <meta property='og:description' content={meta?.description} />
             <meta property='og:locale' content='ko_KR' />
             <meta property='og:title' content={meta?.title} />
-            {meta?.image && (
+            {meta?.coverImage && (
                 <meta
                     property='og:image'
-                    content={`${process.env.NEXT_PUBLIC_BASE_URL}${meta?.image}`}
+                    content={`${process.env.NEXT_PUBLIC_BASE_URL}${
+                        meta!.coverImage
+                    }`}
                 />
             )}
             {meta?.date && (
