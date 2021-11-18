@@ -22,5 +22,5 @@ export function validateForm(formData: PostFormData): string {
     if (!content) errorMessage += '\nContent is required'
     if (!readingTime) errorMessage += '\nReading time is required'
     if (!coverImage) errorMessage += '\nCover image is required'
-    return errorMessage
+    return errorMessage.trim()
 }
