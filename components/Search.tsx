@@ -2,14 +2,14 @@ import { useState, useEffect, SetStateAction, Dispatch } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import SearchResults from '@/components/SearchResults'
 import search from '@/lib/search'
-import { searchResult } from '@/lib/types'
+import { SearchResult } from '@/lib/types'
 
 export default function Search() {
     const [searchTerm, setSearchTerm] = useState('')
     const [searchResults, setSearchResults]: [
-        searchResult[],
-        Dispatch<SetStateAction<searchResult[]>>
-    ] = useState([] as searchResult[])
+        SearchResult[],
+        Dispatch<SetStateAction<SearchResult[]>>
+    ] = useState([] as SearchResult[])
     const [openResult, setOpenResult] = useState(false)
 
     const toggleResults = () => {
@@ -25,7 +25,7 @@ export default function Search() {
             if (keyword === '') {
                 setSearchResults([])
             } else {
-                const results: searchResult[] = search(keyword)
+                const results: SearchResult[] = search(keyword)
                 setSearchResults(results)
             }
         })()

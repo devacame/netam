@@ -1,12 +1,12 @@
 import Post from '@/components/Post'
 import { Dispatch, SetStateAction } from 'react'
-import { searchResult } from '@/lib/types'
+import { SearchResult } from '@/lib/types'
 
 export default function SearchResults({
     results,
     setSearchTerm,
 }: {
-    results: searchResult[]
+    results: SearchResult[]
     setSearchTerm: Dispatch<SetStateAction<string>>
 }) {
     if (results.length === 0) return <></>
