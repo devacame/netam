@@ -32,7 +32,7 @@
     font-family: 'Spoqa Han Sans Neo';
     font-weight: 500;
     src: local('Spoqa Han Sans Neo Medium'),
-        url('/fon/ts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+        url('/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
 }
 
 @font-face {
