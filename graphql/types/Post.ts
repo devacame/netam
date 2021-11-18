@@ -25,12 +25,100 @@ export const Post = objectType({
     },
 })
 
+export const Edge = objectType({
+    name: 'Edge',
+    definition(t) {
+        t.string('cursor')
+        t.field('node', {
+            type: Post,
+        })
+    },
+})
+
+export const PageInfo = objectType({
+    name: 'PageInfo',
+    definition(t) {
+        t.string('endCursor')
+        t.boolean('hasNextPage')
+    },
+})
+
+export const Response = objectType({
+    name: 'Response',
+    definition(t) {
+        t.field('pageInfo', { type: PageInfo })
+        t.list.field('edges', {
+            type: Edge,
+        })
+    },
+})
+
 export const PostQuery = queryType({
     definition(t) {
         t.field('posts', {
-            type: nonNull(list('Post')),
-            resolve(_parent, _args, ctx) {
-                return ctx.prisma.post.findMany()
+            type: 'Response',
+            args: {
+                first: nonNull(intArg()),
+                after: stringArg(),
+            },
+            async resolve(_parent, args, ctx) {
+                let queryResults = null
+
+                if (args.after) {
+                    queryResults = await ctx.prisma.post.findMany({
+                        where: {
+                            published: true,
+                        },
+                        skip: 1,
+                        take: args.first,
+                        cursor: {
+                            id: args.after,
+                        },
+                    })
+                } else {
+                    queryResults = await ctx.prisma.post.findMany({
+                        where: {
+                            published: true,
+                        },
+                        take: args.first,
+                    })
+                }
+                if (queryResults.length > 0) {
+                    const lastPostInResults =
+                        queryResults[queryResults.length - 1]
+                    const myCursor = lastPostInResults.id
+
+                    const secondQueryResults = await ctx.prisma.post.findMany({
+                        where: {
+                            published: true,
+                        },
+                        cursor: {
+                            id: myCursor,
+                        },
+                        skip: 1,
+                        take: args.first,
+                    })
+
+                    const result = {
+                        pageInfo: {
+                            endCursor: myCursor,
+                            hasNextPage: secondQueryResults.length > 0,
+                        },
+                        edges: queryResults.map((post) => ({
+                            cursor: post.id,
+                            node: post,
+                        })),
+                    }
+
+                    return result
+                }
+                return {
+                    pageInfo: {
+                        endCursor: null,
+                        hasNextPage: false,
+                    },
+                    edges: [],
+                }
             },
         })
         t.field('metadatas', {
