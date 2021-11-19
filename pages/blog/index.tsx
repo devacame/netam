@@ -1,6 +1,7 @@
-import BaseLayout from '@/components/BaseLayout'
+import BlogLayout from '@/components/BlogLayout'
 import { gql, useQuery } from '@apollo/client'
 import { BlogMeta, PostsQueryData } from '@/lib/types'
+import Post from '@/components/Post'
 
 const PostsQuery = gql`
     query Post($first: Int!, $after: String) {
@@ -29,17 +30,24 @@ export default function BlogPage() {
     const { data, loading, error, fetchMore } = useQuery(PostsQuery, {
         variables: { first: 4 },
     })
-    if (loading) return <p>Loading...</p>
+    if (loading) {
+        return (
+            <div className='w-screen h-screen flex justify-center items-center'>
+                <div className='animate-spin rounded-full h-32 w-32 border-b-2 border-gray-800 dark:border-white'></div>
+            </div>
+        )
+    }
     if (error) return <p>Error: {error.message}</p>
-    console.log(data.posts.edges)
     const { endCursor, hasNextPage } = data.posts.pageInfo
 
     return (
-        <BaseLayout meta={{ title: 'Blog', description: 'something' }}>
-            <h1 className='absolute top-2'>Blog Posts</h1>
-            {data?.posts.edges.map(({ node }: { node: BlogMeta }) => (
-                <div key={node.id}>{node.id}</div>
-            ))}
+        <BlogLayout meta={{ title: 'Blog', description: 'something' }}>
+            <h1 className='top-2'>Blog Posts</h1>
+            <div className='w-full h-auto mx-auto grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 content-center items-center gap-2 justify-items-center p-4'>
+                {data?.posts.edges.map(({ node }: { node: BlogMeta }) => (
+                    <Post key={node.id} post={node} compact={false} />
+                ))}
+            </div>
             {hasNextPage ? (
                 <button
                     className='px-4 py-2 bg-blue-500 text-white rounded my-10'
@@ -68,9 +76,9 @@ export default function BlogPage() {
                 </button>
             ) : (
                 <p className='my-10 text-center font-medium'>
-                    You have reached the end!{' '}
+                    마지막 글입니다.
                 </p>
             )}
-        </BaseLayout>
+        </BlogLayout>
     )
 }

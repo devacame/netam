@@ -91,7 +91,7 @@ html.dark {
 }
 
 .nav {
-    @apply fixed lg:relative md:w-full lg:w-1/5 top-0 md:h-14 lg:h-auto z-50 bg-light dark:bg-dark;
+    @apply fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-auto z-50 bg-light dark:bg-dark;
 }
 
 .list {
@@ -99,26 +99,9 @@ html.dark {
 }
 
 .item {
-    @apply lg:text-[1.75rem] w-full md:text-center md:mr-0 md:pl-5 md:pr-5;
+    @apply lg:text-[1.75rem] w-full md:sm:text-center md:sm:mr-0 md:sm:pl-5 md:sm:pr-5;
 }
 
 .nav-btn {
     @apply absolute h-full left-3 my-auto;
-}
-
-.custom-img {
-    object-fit: contain;
-    width: 70%;
-    position: relative !important;
-    height: unset !important;
-    z-index: 1 !important;
-}
-
-.unset-img {
-    position: relative;
-    margin: 5px auto 10px auto;
-    width: 70%;
-}
-.unset-img > div {
-    position: unset !important;
 }
