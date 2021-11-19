@@ -5,6 +5,7 @@ class MyDocument extends Document {
         return (
             <Html lang='ko'>
                 <Head>
+                    <meta charSet='utf-8' />
                     <link
                         rel='shortcut icon'
                         href='/icons/favicon.ico'
