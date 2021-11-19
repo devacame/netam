@@ -44,8 +44,13 @@ const Heading3 = ({ children }) => {
 
 const CustomImage = ({ src, alt, children }) => {
     return (
-        <div className='unset-img border-2 border-gray-700 dark:border-gray-300 rounded-sm'>
-            <Image src={src} alt={alt} layout='fill' className='custom-img'>
+        <div className='relative w-full h-[60vh]'>
+            <Image
+                src={process.env.NEXT_PUBLIC_IMAGE_LOADER_URL + src}
+                alt={alt}
+                layout='fill'
+                objectFit='contain'
+            >
                 {children}
             </Image>
         </div>
