@@ -1,13 +1,10 @@
 import Post from '@/components/Post'
-import { Dispatch, SetStateAction } from 'react'
 import { SearchResult } from '@/lib/types'
 
 export default function SearchResults({
     results,
-    setSearchTerm,
 }: {
     results: SearchResult[]
-    setSearchTerm: Dispatch<SetStateAction<string>>
 }) {
     if (results.length === 0) return <></>
 
@@ -16,11 +13,7 @@ export default function SearchResults({
             <div className='p-7'>
                 <h2 className='mb-3'>결과 {results.length}개</h2>
                 {results.map((result, index) => (
-                    <Post
-                        key={index}
-                        post={result}
-                        setSearchTerm={setSearchTerm}
-                    />
+                    <Post key={index} post={result} compact={true} />
                 ))}
             </div>
         </div>

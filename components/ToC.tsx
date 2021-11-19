@@ -24,7 +24,7 @@ export default function ToC({}) {
     }
     return (
         <div
-            className={`md:hidden z-50 fixed right-0 top-20 flex flex-row justify-center items-center rounded-lg bg-lightPoint dark:bg-darkPoint
+            className={`md:sm:hidden z-50 fixed right-0 top-20 flex flex-row justify-center items-center rounded-lg bg-lightPoint dark:bg-darkPoint
             ${open ? 'w-auto h-auto' : 'w-5 h-36'}`}
         >
             <button className='w-5 h-full' onClick={toggleDropdown}>
@@ -32,7 +32,7 @@ export default function ToC({}) {
                 {open && <RiArrowRightSLine />}
             </button>
             {open && (
-                <div className='toc md:hidden'>
+                <div className='toc md:sm:hidden'>
                     <ul className='toc-list'>
                         {headings.map((heading) => (
                             <li key={heading.id}>

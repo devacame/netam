@@ -19,7 +19,7 @@ export default function BlogLayout({ children, meta }: PageProps) {
                 <Nav />
                 <main
                     id='skip'
-                    className='lg:mt-0 mt-14 flex flex-col justify-center items-center lg:w-3/4 w-3/4 min-h-screen mx-auto pb-5 pl-10 pr-10 pt-3 bg-light dark:bg-dark'
+                    className='flex flex-col justify-center items-center lg:w-3/4 w-[95%] h-auto min-h-screen mx-auto pb-5 pl-5 pr-5 pt-3 bg-light dark:bg-dark'
                 >
                     {children}
                 </main>

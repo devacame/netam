@@ -15,7 +15,7 @@ export default function BaseLayout({ children, meta }: PageProps) {
     return (
         <div>
             <SEO meta={meta} />
-            <div className='flex md:flex-col lg:flex-row'>
+            <div className='flex md:sm:flex-col lg:flex-row'>
                 <Nav />
                 <main
                     id='skip'

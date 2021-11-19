@@ -9,7 +9,7 @@ export default function Nav() {
     const [isLargeScreen, setIsLargeScreen] = useState(false)
     const [toggleMenu, setToggleMenu] = useState(false)
     useEffect(() => {
-        if (window.matchMedia('(max-width: 1024px)').matches) {
+        if (window.matchMedia('(max-width: 1023px)').matches) {
             setToggleMenu(false)
             setIsLargeScreen(false)
         } else {
@@ -17,7 +17,7 @@ export default function Nav() {
             setIsLargeScreen(true)
         }
         window.addEventListener('resize', function () {
-            if (window.matchMedia('(min-width: 1025px)').matches) {
+            if (window.matchMedia('(min-width: 1024px)').matches) {
                 setToggleMenu(true)
                 setIsLargeScreen(true)
             } else {
@@ -28,7 +28,7 @@ export default function Nav() {
     }, [])
 
     return (
-        <nav className='nav'>
+        <nav className='fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-screen z-50 bg-light dark:bg-dark'>
             <a href='#skip' className='sr-only focus:not-sr-only'>
                 Skip to content
             </a>

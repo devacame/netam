@@ -68,7 +68,7 @@ export default function Editor({
                     <legend className='text-xl'>
                         {editorType === 'new' ? 'New Post' : 'Edit Post'}
                     </legend>
-                    <div className='flex lg:flex-row md:flex-col justify-evenly w-[95%] h-auto mx-auto lg:gap-x-3'>
+                    <div className='flex lg:flex-row md:sm:flex-col justify-evenly w-[95%] h-auto mx-auto lg:gap-x-3'>
                         <div className='flex flex-col gap-y-2 w-1/2'>
                             <label htmlFor='id'>Id</label>
                             <input

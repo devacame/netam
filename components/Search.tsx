@@ -51,12 +51,7 @@ export default function Search() {
                 />
                 <FaSearch className='absolute right-4 text-black' />
             </form>
-            {openResult && (
-                <SearchResults
-                    results={searchResults}
-                    setSearchTerm={setSearchTerm}
-                />
-            )}
+            {openResult && <SearchResults results={searchResults} />}
         </div>
     )
 }
