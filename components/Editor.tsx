@@ -1,6 +1,5 @@
 import { useState, FormEvent } from 'react'
 import { createPost, updatePost } from '@/lib/PostData'
-import { validateForm } from '@/lib/validate'
 import Link from 'next/link'
 import { BsArrowLeftSquare } from 'react-icons/bs'
 import { PostFormData } from '@/lib/types'
@@ -25,7 +24,11 @@ export default function Editor({
         published: false,
     },
 }: Props) {
-    const [formData, setFormData] = useState(post)
+    const [formData, setFormData] = useState({
+        ...post,
+        category: post.category.toString(),
+    })
+    let err: any
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         let dateOBJ = new Date()
@@ -35,25 +38,24 @@ export default function Editor({
             (dateOBJ.getMonth() + 1) +
             '-' +
             dateOBJ.getDate()
-        formData.readingTime = Math.ceil(
-            formData.content.split(' ').length / 200
-        )
-        formData.date = dateStr
+        const form = {
+            ...formData,
+            date: dateStr,
+            readingTime: Math.ceil(formData.content.split(' ').length / 200),
+            category: formData.category
+                .replace(', ', ',')
+                .replace(' ', '-')
+                .split(','),
+        }
         try {
-            let err = validateForm(formData)
-            console.log(err)
-            if (err) {
-                throw new Error(err)
-            }
             if (editorType === 'new') {
-                await createPost(formData)
+                await createPost(form)
             } else {
-                await updatePost(formData)
+                await updatePost(form)
             }
+            window.location.href = '/admin'
         } catch (e) {
             console.log(e)
-        } finally {
-            // window.location = '/admin'
         }
     }
     return (
@@ -63,6 +65,32 @@ export default function Editor({
                     <BsArrowLeftSquare className='w-7 h-7' />
                 </a>
             </Link>
+            {err && (
+                <div className='absolute top-1 right-1'>
+                    <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800'>
+                        <div className='flex items-center justify-center w-12 bg-red-500'>
+                            <svg
+                                className='w-6 h-6 text-white fill-current'
+                                viewBox='0 0 40 40'
+                                xmlns='http://www.w3.org/2000/svg'
+                            >
+                                <path d='M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z' />
+                            </svg>
+                        </div>
+
+                        <div className='px-4 py-2 -mx-3'>
+                            <div className='mx-3'>
+                                <span className='font-semibold text-red-500 dark:text-red-400'>
+                                    Error
+                                </span>
+                                <p className='text-sm text-gray-600 dark:text-gray-200'>
+                                    {err}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
             <form className='w-full' onSubmit={handleSubmit}>
                 <fieldset className='flex flex-col justify-evenly w-[95%] h-auto mx-auto p-5 border-2 rounded-lg gap-y-3'>
                     <legend className='text-xl'>
@@ -80,7 +108,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        id: e.target.value,
+                                        id: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -94,7 +122,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        title: e.target.value,
+                                        title: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -108,7 +136,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        description: e.target.value,
+                                        description: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -117,16 +145,12 @@ export default function Editor({
                                 type='text'
                                 id='category'
                                 name='category'
-                                value={formData.category
-                                    .toString()
-                                    .replace(',', ', ')}
+                                value={formData.category}
                                 required
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        category: e.target.value
-                                            .replace(',', ', ')
-                                            .split(', '),
+                                        category: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -140,7 +164,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        coverImage: e.target.value,
+                                        coverImage: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -154,7 +178,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        series: e.target.value,
+                                        series: e.target.value.trim(),
                                     })
                                 }}
                             />
@@ -188,7 +212,7 @@ export default function Editor({
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
-                                        content: e.target.value,
+                                        content: e.target.value.trim(),
                                     })
                                 }}
                             />
