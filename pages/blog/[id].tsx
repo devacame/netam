@@ -36,7 +36,7 @@ interface Paths {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: Paths[] = await getPaths()
+    const paths: Paths[] = await getPaths('id')
     return {
         paths,
         fallback: 'blocking',

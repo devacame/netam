@@ -123,15 +123,20 @@ export const PostQuery = queryType({
         })
         t.field('metadatas', {
             type: nonNull(list('Post')),
-            resolve(_parent, _arg, ctx) {
+            args: {
+                series: stringArg(),
+            },
+            resolve(_parent, arg, ctx) {
                 return ctx.prisma.post.findMany({
                     where: {
                         published: true,
+                        series: arg.series,
                     },
                     select: {
                         id: true,
                         title: true,
                         description: true,
+                        coverImage: true,
                         date: true,
                         series: true,
                         category: true,
@@ -142,14 +147,24 @@ export const PostQuery = queryType({
         t.field('post', {
             type: 'Post',
             args: {
-                id: nonNull(stringArg()),
+                id: stringArg(),
+                series: stringArg(),
             },
             resolve(_parent, args, ctx) {
-                return ctx.prisma.post.findUnique({
-                    where: {
-                        id: args.id,
-                    },
-                })
+                if (args.id) {
+                    return ctx.prisma.post.findUnique({
+                        where: {
+                            id: args.id,
+                        },
+                    })
+                } else if (args.series) {
+                    return ctx.prisma.post.findMany({
+                        where: {
+                            series: args.series,
+                        },
+                    })
+                }
+                return {}
             },
         })
     },

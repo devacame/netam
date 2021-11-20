@@ -2,23 +2,41 @@ import { gql } from '@apollo/client'
 import apolloClient from '@/lib/apollo'
 import type { PostFormData } from '@/lib/types'
 
-export async function getPaths() {
+export async function getPaths(attr: string) {
     const {
-        data: { metadatas: ids },
+        data: { metadatas: pathData },
     } = await apolloClient.query({
         query: gql`
             query GetPostMetaData {
                 metadatas {
-                    id
+                    ${attr === 'id' ? 'id' : 'series'}
                 }
             }
         `,
     })
-    const paths = ids.map((id: { id: string }) => ({
-        params: {
-            id: id.id,
-        },
-    }))
+    let paths: any[] = []
+    if (attr === 'id') {
+        paths = pathData.map((id: { id: string }) => ({
+            params: {
+                id: id.id,
+            },
+        }))
+    } else if (attr === 'series') {
+        paths = pathData.map((series: { series: string }) => ({
+            params: {
+                series: series.series,
+            },
+        }))
+        paths = paths
+            .slice()
+            .reverse()
+            .filter(
+                (v, i, a) =>
+                    a.findIndex((t) => t.params.series === v.params.series) ===
+                    i
+            )
+            .reverse()
+    }
     return paths
 }
 
