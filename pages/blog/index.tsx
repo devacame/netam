@@ -66,7 +66,6 @@ export default function BlogPage() {
                                     ...prevResult.posts.edges,
                                     ...fetchMoreResult.posts?.edges,
                                 ]
-                                console.log(fetchMoreResult.posts.edges)
                                 return fetchMoreResult
                             },
                         })
