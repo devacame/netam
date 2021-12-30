@@ -28,7 +28,7 @@ const PostsQuery = gql`
 `
 export default function BlogPage() {
     const { data, loading, error, fetchMore } = useQuery(PostsQuery, {
-        variables: { first: 4 },
+        variables: { first: 12 },
     })
     if (loading) {
         return (
