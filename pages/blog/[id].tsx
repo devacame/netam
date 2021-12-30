@@ -7,12 +7,16 @@ import { BlogMeta } from '@/lib/types'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getPaths, getPost } from '@/lib/PostData'
 import { postContent } from '@/lib/markdown'
+import { useSession } from 'next-auth/react'
+import { FiEdit3 } from 'react-icons/fi'
+import Link from 'next/link'
 interface PageProps {
     meta: BlogMeta
     content: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
 export default function Post({ meta, content }: PageProps) {
+    const { data: session, status } = useSession()
     const [renderToC, setRenderToC] = useState(false)
     useEffect(() => {
         setRenderToC(true)
@@ -20,10 +24,16 @@ export default function Post({ meta, content }: PageProps) {
     return (
         <BlogLayout meta={meta}>
             <h1>{meta.title}</h1>
-            <p className='text-center text-black dark:text-white'>
-                {meta.date} |{' '}
-                <span className='text-blue-300'>{meta.readingTime}</span>분
-            </p>
+            <div className='flex flex-row gap-x-3'>
+                <p className='text-center text-indigo-200'>
+                    {meta.date} | {meta.readingTime}분
+                </p>
+                {status === 'authenticated' && (
+                    <Link href={'/admin/edit/' + meta.id} passHref>
+                        <FiEdit3 />
+                    </Link>
+                )}
+            </div>
             {renderToC && <ToC />}
             <MDXRemote {...content} components={components} />
         </BlogLayout>
