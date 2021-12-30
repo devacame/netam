@@ -28,7 +28,7 @@ export default function Nav() {
     }, [])
 
     return (
-        <nav className='fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-screen z-50 bg-light dark:bg-dark'>
+        <nav className='fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-auto lg:min-h-screen z-50 bg-light dark:bg-dark'>
             <a href='#skip' className='sr-only focus:not-sr-only'>
                 Skip to content
             </a>
@@ -44,7 +44,7 @@ export default function Nav() {
                 <div className='lg:sticky lg:top-0 flex flex-col font-bold p-2 gap-y-2 bg-light dark:bg-dark z-50'>
                     <div className='flex flex-col justify-center items-center'>
                         <Link href='/'>
-                            <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
+                            <a className='nav-link'>
                                 <h1 className='text-black dark:text-white'>
                                     VESOC
                                 </h1>
@@ -65,16 +65,12 @@ export default function Nav() {
                     <Search />
                     <div className='item'>
                         <Link href='/blog'>
-                            <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
-                                Blog
-                            </a>
+                            <a className='nav-link'>Blog</a>
                         </Link>
                     </div>
                     <div className='item'>
                         <Link href='/about'>
-                            <a className='p-1 text-bluePrime dark:text-white hover:text-opacity-30'>
-                                About
-                            </a>
+                            <a className='nav-link'>About</a>
                         </Link>
                     </div>
                 </div>

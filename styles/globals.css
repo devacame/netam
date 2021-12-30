@@ -3,62 +3,12 @@
 @import url('https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css');
 
 @tailwind base;
-
-@layer base {
-    h1 {
-        @apply lg:text-3xl text-2xl m-2;
-        color: #27a1b9;
-    }
-    h2 {
-        @apply lg:text-2xl text-xl m-2;
-        color: #41b19c;
-    }
-    h3 {
-        @apply lg:text-xl text-lg m-2;
-        color: #916bbf;
-    }
-    a {
-        @apply text-lightBlue;
-    }
-    a:hover {
-        @apply text-blue-300;
-    }
-    p {
-        @apply text-baseColor text-base leading-normal mb-1;
-    }
-    ul {
-        @apply list-disc list-outside;
-    }
-    ol {
-        @apply list-decimal list-outside;
-    }
-    em,
-    i {
-        @apply text-red-400 dark:text-red-200;
-    }
-    b,
-    strong {
-        @apply font-extrabold;
-    }
-    code {
-        @apply select-all;
-    }
-    article {
-        @apply whitespace-pre;
-    }
-    input {
-        @apply w-[90%] mx-auto;
-    }
-    label {
-        @apply ml-5;
-    }
-}
-
 @tailwind components;
 @tailwind utilities;
 
 html {
     font-family: Spoqa Han Sans Neo;
+    @apply accent-[#61d7e4] caret-[#61d7e4];
 }
 
 html.light {
@@ -67,6 +17,51 @@ html.light {
 
 html.dark {
     background-color: #121212;
+}
+
+h1 {
+    @apply lg:text-3xl text-2xl text-[#27a1b9] m-2;
+}
+h2 {
+    @apply lg:text-2xl text-xl text-[#41b19c] m-2;
+}
+h3 {
+    @apply lg:text-xl text-lg text-[#916bbf] m-2;
+}
+a {
+    @apply text-cyan-500 underline underline-offset-1 decoration-emerald-300;
+}
+a:hover {
+    @apply text-cyan-600 underline underline-offset-1 decoration-teal-400;
+}
+p {
+    @apply text-baseColor text-base leading-normal mb-1;
+}
+ul {
+    @apply list-disc list-outside;
+}
+ol {
+    @apply list-decimal list-outside;
+}
+em,
+i {
+    @apply text-red-400 dark:text-red-200;
+}
+b,
+strong {
+    @apply font-extrabold;
+}
+code {
+    @apply select-all;
+}
+article {
+    @apply whitespace-pre;
+}
+input {
+    @apply w-[90%] mx-auto;
+}
+label {
+    @apply ml-5;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -92,6 +87,10 @@ html.dark {
 
 .nav {
     @apply fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-auto z-50 bg-light dark:bg-dark;
+}
+
+.nav-link {
+    @apply p-1 text-bluePrime dark:text-white hover:text-opacity-30 no-underline;
 }
 
 .list {
