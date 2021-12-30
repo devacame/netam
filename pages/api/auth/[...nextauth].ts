@@ -1,12 +1,9 @@
 import NextAuth from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
-// import { PrismaAdapter } from '@next-auth/prisma-adapter'
-// import prisma from '@/lib/prisma'
 import protectAPI from '@/lib/apiProtection'
 
 export default protectAPI(
     NextAuth({
-        // adapter: PrismaAdapter(prisma),
         providers: [
             GithubProvider({
                 clientId: process.env.GITHUB_CLIENT_ID,
@@ -14,9 +11,9 @@ export default protectAPI(
             }),
         ],
         session: {
-            jwt: true,
             maxAge: 1 * (24 * 60 * 60), // Session has a max age of 1 Day
         },
+        secret: process.env.SECRET,
         jwt: {
             secret: process.env.JWT_SECRET,
         },
