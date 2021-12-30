@@ -11,7 +11,6 @@ export default function Series({
     series: string
     data: BlogMeta[]
 }) {
-    console.log(data)
     return (
         <BlogLayout meta={{ title: 'Blog', description: 'Blog' }}>
             <h1 className='top-2'>{series}</h1>
