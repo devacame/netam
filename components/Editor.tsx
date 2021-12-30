@@ -61,12 +61,15 @@ export default function Editor({
     }
     return (
         <div className='flex flex-col'>
+            <Script
+                src='https://upload-widget.cloudinary.com/global/all.js'
+                strategy='beforeInteractive'
+            />
             <Link href='/admin'>
                 <a className='text-green-100 w-10 h-10 ml-4 mt-4'>
                     <BsArrowLeftSquare className='w-7 h-7' />
                 </a>
             </Link>
-
             <form className='w-full' onSubmit={handleSubmit}>
                 <fieldset className='flex flex-col justify-evenly w-[95%] h-auto mx-auto p-5 border-2 rounded-lg gap-y-3'>
                     <legend className='text-xl'>
@@ -203,10 +206,6 @@ export default function Editor({
                     </button>
                 </fieldset>
             </form>
-            <Script
-                src='https://upload-widget.cloudinary.com/global/all.js'
-                strategy='beforeInteractive'
-            />
         </div>
     )
 }

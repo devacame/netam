@@ -36,6 +36,7 @@
     "exclude": [
         "node_modules",
         "components/MDXComponents.jsx",
-        "lib/markdown.js"
+        "lib/markdown.js",
+        "components/CloudinaryUploadWidget.jsx"
     ]
 }
