@@ -22,7 +22,10 @@ export default function Post({
                     {!compact && post.coverImage !== undefined && (
                         <div className='relative w-full h-[20vh]'>
                             <Image
-                                src={post.coverImage!}
+                                src={
+                                    process.env.NEXT_PUBLIC_IMAGE_LOADER_URL +
+                                    post.coverImage
+                                }
                                 alt={post.id + ' cover image'}
                                 layout='fill'
                                 objectFit='contain'
