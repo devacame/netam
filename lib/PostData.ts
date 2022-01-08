@@ -170,3 +170,21 @@ export async function updatePost(postData: PostFormData) {
             console.error(e)
         })
 }
+
+export async function togglePublishState(id: string, published: boolean) {
+    apolloClient
+        .mutate({
+            mutation: gql`
+                mutation Mutation($id: String!, $published: Boolean!) {
+                    changePublishState(id: $id, published: $published) {
+                        id
+                        published
+                    }
+                }
+            `,
+            variables: { id, published },
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+}
