@@ -14,8 +14,7 @@ export interface BlogMeta extends MetaData {
     readingTime: number
 }
 
-export interface AdminPostData extends MetaData {
-    id: string
+export interface AdminPostData extends BlogMeta {
     published: boolean
 }
 

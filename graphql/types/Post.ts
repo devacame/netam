@@ -60,45 +60,48 @@ export const PostQuery = queryType({
             type: 'Response',
             args: {
                 first: nonNull(intArg()),
+                all: nonNull(booleanArg()),
                 after: stringArg(),
             },
             async resolve(_parent, args, ctx) {
                 let queryResults = null
 
                 if (args.after) {
-                    queryResults = await ctx.prisma.post.findMany({
+                    let afterQuery = {
                         where: {
-                            published: true,
+                            ...(!args.all && {published: true})
                         },
                         skip: 1,
                         take: args.first,
                         cursor: {
                             id: args.after,
                         },
-                    })
+                    }
+                    queryResults = await ctx.prisma.post.findMany(afterQuery)
                 } else {
-                    queryResults = await ctx.prisma.post.findMany({
+                    let firstQuery = {
                         where: {
-                            published: true,
+                            ...(!args.all && {published: true})
                         },
-                        take: args.first,
-                    })
+                        take: args.first
+                    }
+                    queryResults = await ctx.prisma.post.findMany(firstQuery)
                 }
                 if (queryResults.length > 0) {
                     const lastPostInResults =
                         queryResults[queryResults.length - 1]
                     const myCursor = lastPostInResults.id
-
-                    const secondQueryResults = await ctx.prisma.post.findMany({
+                    let secondQuery = {
                         where: {
-                            published: true,
+                            ...(!args.all && {published: true})
                         },
                         cursor: {
                             id: myCursor,
                         },
                         skip: 1,
                         take: args.first,
-                    })
+                    }
+                    const secondQueryResults = await ctx.prisma.post.findMany(secondQuery)
 
                     const result = {
                         pageInfo: {

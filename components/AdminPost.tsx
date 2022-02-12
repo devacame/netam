@@ -3,6 +3,7 @@ import { AdminPostData } from '@/lib/types'
 import { togglePublishState } from '@/lib/PostData'
 
 export default function AdminPost({ postData }: { postData: AdminPostData }) {
+    let published = postData.published
     return (
         <div className='flex flex-row gap-x-2 w-full h-1/5 outline outline-offset-1 outline-2 outline-slate-300 rounded-md p-1'>
             <div className='relative w-1/5 h-[90%]'>
@@ -41,11 +42,11 @@ export default function AdminPost({ postData }: { postData: AdminPostData }) {
                         type='checkbox'
                         id='publishToggle'
                         className='sr-only'
-                        checked={postData.published}
+                        checked={published}
                         onChange={(e) => {
                             e.preventDefault()
-                            togglePublishState(postData.id, !postData.published)
-                            postData.published = !postData.published
+                            togglePublishState(postData.id, !published)
+                            published = !published
                         }}
                     />
                     <div className='block bg-gray-600 w-14 h-8 rounded-full'></div>
