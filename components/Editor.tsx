@@ -2,13 +2,13 @@ import { useState, FormEvent } from 'react'
 import { createPost, updatePost } from '@/lib/PostData'
 import Link from 'next/link'
 import { BsArrowLeftSquare } from 'react-icons/bs'
-import { PostFormData } from '@/lib/types'
+import { PostData } from '@/lib/types'
 import Script from 'next/script'
 import CloudinaryUploadWidget from '@/components/CloudinaryUploadWidget'
 
 interface Props {
     editorType: 'new' | 'edit'
-    post?: PostFormData
+    post?: PostData
 }
 
 export default function Editor({

@@ -1,3 +1,4 @@
+import { PostData } from '@/lib/types'
 import {
     nonNull,
     list,
@@ -104,7 +105,7 @@ export const PostQuery = queryType({
                             endCursor: myCursor,
                             hasNextPage: secondQueryResults.length > 0,
                         },
-                        edges: queryResults.map((post) => ({
+                        edges: queryResults.map((post: PostData) => ({
                             cursor: post.id,
                             node: post,
                         })),
@@ -127,10 +128,10 @@ export const PostQuery = queryType({
                 series: stringArg(),
             },
             resolve(_parent, arg, ctx) {
-                return ctx.prisma.post.findMany({
+                let options = {
                     where: {
                         published: true,
-                        series: arg.series,
+                        ...(arg.series && { series: arg.series }),
                     },
                     select: {
                         id: true,
@@ -141,7 +142,8 @@ export const PostQuery = queryType({
                         series: true,
                         category: true,
                     },
-                })
+                }
+                return ctx.prisma.post.findMany(options)
             },
         })
         t.field('post', {
@@ -179,7 +181,7 @@ export const PostMutation = mutationType({
                 title: nonNull(stringArg()),
                 description: nonNull(stringArg()),
                 coverImage: nonNull(stringArg()),
-                category: nonNull(list(stringArg())),
+                category: nonNull(list(nonNull(stringArg()))),
                 series: nonNull(stringArg()),
                 date: nonNull(stringArg()),
                 readingTime: nonNull(intArg()),
@@ -202,7 +204,7 @@ export const PostMutation = mutationType({
                             published: args.published,
                         },
                     })
-                    .catch((e) => {
+                    .catch((e: Error) => {
                         console.log(e)
                         return null
                     })
@@ -216,7 +218,7 @@ export const PostMutation = mutationType({
                 title: nonNull(stringArg()),
                 description: nonNull(stringArg()),
                 coverImage: nonNull(stringArg()),
-                category: nonNull(list(stringArg())),
+                category: nonNull(list(nonNull(stringArg()))),
                 series: nonNull(stringArg()),
                 date: nonNull(stringArg()),
                 readingTime: nonNull(intArg()),

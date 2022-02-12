@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import apolloClient from '@/lib/apollo'
-import type { PostFormData } from '@/lib/types'
+import type { PostData } from '@/lib/types'
 
 export async function getPaths(attr: string) {
     const {
@@ -42,7 +42,7 @@ export async function getPaths(attr: string) {
 
 export async function getPost(
     id: string
-): Promise<{ content: string; metadatas: Partial<PostFormData> }> {
+): Promise<{ content: string; metadatas: PostData }> {
     const {
         data: {
             post: { content: encodedContent, ...metadatas },
@@ -71,7 +71,7 @@ export async function getPost(
     return { content, metadatas }
 }
 
-export async function createPost(postData: PostFormData) {
+export async function createPost(postData: PostData) {
     const contentBuff = Buffer.from(postData.content, 'utf-8')
     const encodedContent = contentBuff.toString('base64')
     apolloClient
@@ -81,35 +81,35 @@ export async function createPost(postData: PostFormData) {
                     $id: String!
                     $title: String!
                     $description: String!
-                    $coverImage: String!
+                    $date: String!
                     $category: [String]!
                     $series: String!
-                    $date: String!
-                    $readingTime: Int!
+                    $coverImage: String!
                     $content: String!
+                    $readingTime: Int!
                     $published: Boolean!
                 ) {
                     createPost(
                         id: $id
                         title: $title
                         description: $description
-                        coverImage: $coverImage
+                        date: $date
                         category: $category
                         series: $series
-                        date: $date
-                        readingTime: $readingTime
+                        coverImage: $coverImage
                         content: $content
+                        readingTime: $readingTime
                         published: $published
                     ) {
                         id
                         title
                         description
-                        coverImage
                         date
                         category
+                        series
+                        coverImage
                         content
                         readingTime
-                        series
                         published
                     }
                 }
@@ -121,7 +121,7 @@ export async function createPost(postData: PostFormData) {
         })
 }
 
-export async function updatePost(postData: PostFormData) {
+export async function updatePost(postData: PostData) {
     const contentBuff = Buffer.from(postData.content, 'utf-8')
     const encodedContent = contentBuff.toString('base64')
     apolloClient
@@ -131,35 +131,35 @@ export async function updatePost(postData: PostFormData) {
                     $id: String!
                     $title: String!
                     $description: String!
-                    $coverImage: String!
+                    $date: String!
                     $category: [String]!
                     $series: String!
-                    $date: String!
-                    $readingTime: Int!
+                    $coverImage: String!
                     $content: String!
+                    $readingTime: Int!
                     $published: Boolean!
                 ) {
                     updatePost(
                         id: $id
                         title: $title
                         description: $description
-                        coverImage: $coverImage
+                        date: $date
                         category: $category
                         series: $series
-                        date: $date
-                        readingTime: $readingTime
+                        coverImage: $coverImage
                         content: $content
+                        readingTime: $readingTime
                         published: $published
                     ) {
                         id
                         title
                         description
-                        coverImage
                         date
                         category
+                        series
+                        coverImage
                         content
                         readingTime
-                        series
                         published
                     }
                 }
