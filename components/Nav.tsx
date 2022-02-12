@@ -28,7 +28,7 @@ export default function Nav() {
     }, [])
 
     return (
-        <nav className='fixed lg:relative md:sm:w-full lg:w-1/5 top-0 md:sm:h-14 lg:h-auto lg:min-h-screen z-50 bg-light dark:bg-dark'>
+        <nav className='fixed lg:relative md:w-full sm:w-full lg:w-1/5 top-0 md:h-14 sm:h-14 lg:h-auto lg:min-h-screen z-50 bg-light dark:bg-dark'>
             <a href='#skip' className='sr-only focus:not-sr-only'>
                 Skip to content
             </a>
