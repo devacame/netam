@@ -28,7 +28,8 @@
             "@/styles/*": ["styles/*"],
             "@/components/*": ["components/*"],
             "@/lib/*": ["lib/*"],
-            "@/graphql/*": ["graphql/*"]
+            "@/graphql/*": ["graphql/*"],
+            "@/scripts/*": ["scripts/*"]
         },
         "incremental": true
     },
