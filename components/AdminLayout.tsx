@@ -2,19 +2,17 @@ import SEO from '@/components/SEO'
 import Nav from '@/components/Nav'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
 import { useState, useEffect, ReactNode } from 'react'
-import { SEOData } from '@/lib/types'
 
 interface PageProps {
-    meta: SEOData
     children: ReactNode
 }
 
-export default function BlogLayout({ children, meta }: PageProps) {
+export default function BlogLayout({ children }: PageProps) {
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])
     return (
         <>
-            <SEO meta={meta} />
+            <SEO />
             <div className='flex flex-row'>
                 <Nav />
                 <main

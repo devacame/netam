@@ -2,7 +2,7 @@ import { getPaths } from '@/lib/PostData'
 import { GetStaticPaths } from 'next'
 import BlogLayout from '@/components/BlogLayout'
 import Post from '@/components/Post'
-import { BlogMeta } from '@/lib/types'
+import { BlogMeta, SEOData } from '@/lib/types'
 
 export default function Series({
     series,
@@ -11,12 +11,18 @@ export default function Series({
     series: string
     data: BlogMeta[]
 }) {
+    const meta: SEOData = {
+        title: `${series}`,
+        description: `Blog Page for series ${series} | ${series}를 위한 페이지`,
+        date: '2022-01-01',
+        coverImage: '/icons/LOGO.png',
+    }
     return (
-        <BlogLayout meta={{ title: 'Blog', description: 'Blog' }}>
+        <BlogLayout meta={meta}>
             <h1 className='top-2'>{series}</h1>
             <div className='w-full h-auto mx-auto grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 content-center items-center gap-2 justify-items-center p-4'>
                 {data?.map((post: BlogMeta) => (
-                    <Post key={post.id} post={post} compact={false} />
+                    <Post key={post.id} post={post} />
                 ))}
             </div>
         </BlogLayout>
@@ -37,9 +43,9 @@ export async function getStaticProps({
             title
             description
             date
-            coverImage
             category
             series
+            coverImage
         }
     }
 `
@@ -67,7 +73,6 @@ interface Paths {
 }
 export const getStaticPaths: GetStaticPaths = async () => {
     const paths: Paths[] = await getPaths('series')
-    console.log(paths)
     return {
         paths,
         fallback: false,

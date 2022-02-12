@@ -3,39 +3,48 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { components } from '@/components/MDXComponents'
 import ToC from '@/components/ToC'
 import { useEffect, useState } from 'react'
-import { BlogMeta } from '@/lib/types'
+import { PostData, SEOData } from '@/lib/types'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getPaths, getPost } from '@/lib/PostData'
 import { postContent } from '@/lib/markdown'
 import { useSession } from 'next-auth/react'
 import { FiEdit3 } from 'react-icons/fi'
 import Link from 'next/link'
+
 interface PageProps {
-    meta: BlogMeta
+    metadata: PostData
     content: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
-export default function Post({ meta, content }: PageProps) {
-    const { data: session, status } = useSession()
+export default function Post({ metadata, content }: PageProps) {
+    const { status } = useSession()
     const [renderToC, setRenderToC] = useState(false)
     useEffect(() => {
         setRenderToC(true)
     }, [])
+    const meta: SEOData = {
+        title: metadata.title,
+        description: metadata.description,
+        date: metadata.date,
+        coverImage: metadata.coverImage,
+    }
     return (
         <BlogLayout meta={meta}>
-            <h1>{meta.title}</h1>
+            <h1>{metadata.title}</h1>
             <div className='flex flex-row gap-x-3'>
                 <p className='text-center text-indigo-200'>
-                    {meta.date} | {meta.readingTime}분
+                    {metadata.date} | {metadata.readingTime}분
                 </p>
                 {status === 'authenticated' && (
-                    <Link href={'/admin/edit/' + meta.id} passHref>
+                    <Link href={'/admin/edit/' + metadata.id} passHref>
                         <FiEdit3 />
                     </Link>
                 )}
             </div>
             {renderToC && <ToC />}
-            <MDXRemote {...content} components={components} />
+            <article>
+                <MDXRemote {...content} components={components} />
+            </article>
         </BlogLayout>
     )
 }
@@ -64,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
     return {
         props: {
-            meta: postData.metadatas,
+            metadata: postData.metadatas,
             content: serializedContent,
         },
         revalidate: 7 * 24 * 60 * 60,

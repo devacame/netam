@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import SEO from '@/components/SEO'
-import { MetaData } from '@/lib/types'
+import { SEOData } from '@/lib/types'
 
 export default function Error404() {
-    const meta: MetaData = {
+    const meta: SEOData = {
         title: '404 Error | 404 에러',
+        description: 'User related 404 error | 사용자 관련 404 에러',
+        date: '2022-01-01',
+        coverImage: '/icons/LOGO.png',
     }
     return (
         <div>

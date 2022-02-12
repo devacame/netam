@@ -2,11 +2,11 @@ import SEO from '@/components/SEO'
 import Nav from '@/components/Nav'
 import ThemeToggleBtn from '@/components/ThemeToggleBtn'
 import { useState, useEffect, ReactNode } from 'react'
-import { MetaData } from '@/lib/types'
+import { SEOData } from '@/lib/types'
 
 interface PageProps {
+    meta: SEOData
     children: ReactNode
-    meta: MetaData
 }
 
 export default function BaseLayout({ children, meta }: PageProps) {

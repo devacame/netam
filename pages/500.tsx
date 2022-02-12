@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import SEO from '@/components/SEO'
-import { MetaData } from '@/lib/types'
+import { SEOData } from '@/lib/types'
 
 export default function Error500() {
-    const meta: MetaData = {
+    const meta: SEOData = {
         title: '500 Error | 500 에러',
+        description: 'Server related 500 error | 서버 관련 500 에러',
+        date: '2022-01-01',
+        coverImage: '/icons/LOGO.png',
     }
     return (
         <div>

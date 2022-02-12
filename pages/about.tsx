@@ -7,14 +7,15 @@ import {
     SiNodedotjs,
 } from 'react-icons/si'
 import BaseLayout from '@/components/BaseLayout'
-import { MetaData } from '@/lib/types'
+import { SEOData } from '@/lib/types'
 
 export default function About() {
-    const meta: MetaData = {
-        title: 'About Coder38611 | Coder38611은?',
+    const meta: SEOData = {
+        title: 'About VESOC | VESOC은?',
         description:
-            'About Coder38611, who am I, what can I do, what I want to do | Coder38611에 대하여, 누구인지, 무엇을 할 수 있는지',
-        image: '/icons/coder38611.png',
+            'About VESOC, who am I, what can I do, what I want to do | VESOC에 대하여, 누구인지, 무엇을 할 수 있는지',
+        date: '2022-01-01',
+        coverImage: '/icons/apple-icon.png',
     }
     return (
         <BaseLayout meta={meta}>

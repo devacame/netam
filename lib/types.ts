@@ -19,6 +19,13 @@ export interface AdminPostData extends MetaData {
     published: boolean
 }
 
+export interface SEOData {
+    title: string
+    description: string
+    date: string
+    coverImage: string
+}
+
 export type ApiFunction = (req: NextApiRequest, res: NextApiResponse) => any
 
 export interface PostData {
