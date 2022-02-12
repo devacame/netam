@@ -1,8 +1,8 @@
 import { readdirSync, mkdirSync, writeFile } from 'fs'
 import fetch from 'node-fetch'
 
-async function cachePostsMetaData() {
-    const endpoint = `${process.env.API_URL}/api/graphql`
+export default async function cachePostsMetaData() {
+    const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api/graphql`
     const query = `
         query GetPostMetaData {
             metadatas {
@@ -12,6 +12,8 @@ async function cachePostsMetaData() {
                 date
                 category
                 series
+                coverImage
+                readingTime
             }
         }
     `
@@ -33,7 +35,9 @@ async function cachePostsMetaData() {
         'const postData = [' +
         data.map((post) => JSON.stringify(post)).join(', ') +
         ']\nexport default postData'
-    await writeFile('cache/data.js', dataString, (err) => console.log(err))
+    await writeFile('cache/data.js', dataString, (err) =>
+        console.log(err ? err : 'No error occuered.')
+    )
 }
 
 cachePostsMetaData()
