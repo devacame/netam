@@ -12,7 +12,7 @@ const apolloServer = new ApolloServer({
 
 const startServer = apolloServer.start()
 
-export default cors(async function handler(req, res) {
+export default cors(async function handler(req, res): Promise<any> {
     res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.setHeader(
         'Access-Control-Allow-Origin',
