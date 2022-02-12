@@ -1,5 +1,5 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { FiLogIn, FiLogOut } from 'react-icons/fi'
+import { HiOutlineLockClosed, HiOutlineLockOpen } from 'react-icons/hi'
 
 export default function AuthenticateBtn() {
     const { status } = useSession()
@@ -14,7 +14,7 @@ export default function AuthenticateBtn() {
                         })
                     }
                 >
-                    <FiLogIn className='w-full h-full' />
+                    <HiOutlineLockOpen className='w-full h-full' />
                 </button>
             )}
             {status === 'authenticated' && (
@@ -24,7 +24,7 @@ export default function AuthenticateBtn() {
                         signOut({ callbackUrl: `${process.env.BASE_URL}/` })
                     }
                 >
-                    <FiLogOut className='w-full h-full' />
+                    <HiOutlineLockClosed className='w-full h-full' />
                 </button>
             )}
         </>
