@@ -19,7 +19,7 @@ export default function BaseLayout({ children, meta }: PageProps) {
                 <Nav />
                 <main
                     id='skip'
-                    className='lg:mt-0 mt-14 flex flex-col justify-center items-center w-3/4 h-screen mx-auto  bg-light dark:bg-dark'
+                    className='lg:mt-0 mt-14 flex flex-col justify-center items-center w-3/4 min-h-screen mx-auto  bg-light dark:bg-dark'
                 >
                     {children}
                 </main>
