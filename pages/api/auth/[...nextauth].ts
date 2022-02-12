@@ -20,10 +20,7 @@ export default protectAPI(
         callbacks: {
             async jwt({ token, user, isNewUser }) {
                 /* Prevent new user signups except owner + extra check with Github's unique username policy */
-                if (
-                    (isNewUser && token.name !== process.env.SITE_OWNER_NAME) ||
-                    !user
-                ) {
+                if (isNewUser && token.name !== process.env.SITE_OWNER_NAME) {
                     return { token: null }
                 }
                 if (user) return token
