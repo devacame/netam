@@ -19,48 +19,48 @@ html.dark {
     background-color: #121212;
 }
 
-h1 {
+article > h1 {
     @apply lg:text-3xl text-2xl text-[#27a1b9] m-2;
 }
-h2 {
+article > h2 {
     @apply lg:text-2xl text-xl text-[#41b19c] m-2;
 }
-h3 {
+article > h3 {
     @apply lg:text-xl text-lg text-[#916bbf] m-2;
 }
-a {
+article > a {
     @apply text-cyan-500 underline underline-offset-1 decoration-emerald-300;
 }
-a:hover {
+article > a:hover {
     @apply text-cyan-600 underline underline-offset-1 decoration-teal-400;
 }
-p {
+article > p {
     @apply text-baseColor text-base leading-normal mb-1;
 }
-ul {
+article > ul {
     @apply list-disc list-outside;
 }
-ol {
+article > ol {
     @apply list-decimal list-outside;
 }
-em,
+article > em,
 i {
     @apply text-red-400 dark:text-red-200;
 }
-b,
+article > b,
 strong {
     @apply font-extrabold;
 }
-code {
+article > code {
     @apply select-all;
 }
 article {
     @apply whitespace-pre;
 }
-input {
+article > input {
     @apply w-[90%] mx-auto;
 }
-label {
+article > label {
     @apply ml-5;
 }
 
