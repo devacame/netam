@@ -12,20 +12,13 @@ export default function SEO({ meta, nofollow }: PageProps) {
     if (router.asPath.startsWith('/admin')) {
         return (
             <Head>
-                <meta
-                    name='viewport'
-                    content='width=device-width, initial-scale=1.0'
-                />
+                <title>Admin Page</title>
                 <meta name='robots' content={'nofollow, noindex'} />
             </Head>
         )
     }
     return (
         <Head>
-            <meta
-                name='viewport'
-                content='width=device-width, initial-scale=1.0'
-            />
             <meta
                 name='robots'
                 content={nofollow ? 'nofollow, noindex' : 'follow, index'}
