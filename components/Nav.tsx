@@ -4,8 +4,10 @@ import LOGO from '@/components/LOGO'
 import { GoMarkGithub } from 'react-icons/go'
 import Search from '@/components/Search'
 import AuthenticateBtn from '@/components/AuthenticateBtn'
+import { useSession } from 'next-auth/react'
 
 export default function Nav() {
+    const { status } = useSession()
     const [isLargeScreen, setIsLargeScreen] = useState(false)
     const [toggleMenu, setToggleMenu] = useState(false)
     useEffect(() => {
@@ -68,11 +70,13 @@ export default function Nav() {
                             <a className='nav-link'>Blog</a>
                         </Link>
                     </div>
-                    <div className='item'>
-                        <Link href='/about'>
-                            <a className='nav-link'>About</a>
-                        </Link>
-                    </div>
+                    {status === 'authenticated' && (
+                        <div className='item'>
+                            <Link href='/admin'>
+                                <a className='nav-link'>Admin</a>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             )}
         </nav>

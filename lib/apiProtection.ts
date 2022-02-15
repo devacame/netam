@@ -3,10 +3,7 @@ import { ApiFunction } from '@/lib/types'
 
 const protectAPI = (handler: ApiFunction) => {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-        if (
-            new URL(req.headers.referer!).origin !==
-            process.env.NEXT_PUBLIC_BASE_URL
-        ) {
+        if (req.headers.host !== new URL(process.env.NEXTAUTH_URL!).host) {
             return res
                 .status(403)
                 .json({ success: false, message: `Forbidden` })

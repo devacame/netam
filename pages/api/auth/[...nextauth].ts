@@ -10,12 +10,13 @@ export default protectAPI(
                 clientSecret: process.env.GITHUB_CLIENT_SECRET,
             }),
         ],
-        session: {
-            maxAge: 1 * (24 * 60 * 60), // Session has a max age of 1 Day
-        },
-        secret: process.env.SECRET,
+        secret: process.env.NEXTAUTH_SECRET,
         jwt: {
-            secret: process.env.JWT_SECRET,
+            maxAge: 1 * (24 * 60 * 60), // Token has a max age of 1 Day
+        },
+        theme: {
+            colorScheme: 'auto', // "auto" | "dark" | "light"
+            logo: '/icons/LOGO.png', // Absolute URL to image
         },
         callbacks: {
             async jwt({ token, user, isNewUser }) {
