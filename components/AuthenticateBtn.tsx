@@ -3,7 +3,6 @@ import { HiOutlineLockClosed, HiOutlineLockOpen } from 'react-icons/hi'
 
 export default function AuthenticateBtn() {
     const { status } = useSession()
-    console.log('status', status)
     return (
         <>
             {status === 'unauthenticated' && (
