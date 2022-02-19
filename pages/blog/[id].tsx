@@ -3,7 +3,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import MDXRemote from '@/components/MDXRemote'
 import ToC from '@/components/ToC'
 import { useEffect, useState } from 'react'
-import { PostData, SEOData } from '@/lib/types'
+import { BlogMeta, SEOData } from '@/lib/types'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getPaths, getPost } from '@/lib/PostData'
 import { postContent } from '@/lib/markdown'
@@ -13,7 +13,7 @@ import Utterances from '@/components/Utterances'
 import Link from 'next/link'
 
 interface PageProps {
-    metadata: PostData
+    metadata: BlogMeta
     content: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
@@ -73,9 +73,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
     const postData = await getPost(params!.id)
     const { serializedContent } = await postContent(postData.content)
-    if (postData.metadatas?.published === false) {
-        return { notFound: true }
-    }
     return {
         props: {
             metadata: postData.metadatas,

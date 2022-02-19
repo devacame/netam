@@ -53,14 +53,13 @@ export async function getPost(
                 post(id: $postId) {
                     id
                     title
-                    date
                     description
+                    date
                     category
                     series
                     coverImage
-                    readingTime
                     content
-                    published
+                    readingTime
                 }
             }
         `,
