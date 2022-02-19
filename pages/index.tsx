@@ -55,9 +55,12 @@ export default function Index() {
                         기술을 접해보고 언젠가 완벽한 언어를 만들고 싶습니다.
                     </p>
                 </div>
-                <button className='text-base text-lightBlue border-gray-700 active:border-green-200' onClick={() => {
-                    navigator.clipboard.writeText('contact@vesoc.dev')
-                }}>
+                <button
+                    className='text-base text-lightBlue border-gray-700 active:border-green-200'
+                    onClick={() => {
+                        navigator.clipboard.writeText('contact@vesoc.dev')
+                    }}
+                >
                     contact@vesoc.dev
                 </button>
             </div>
