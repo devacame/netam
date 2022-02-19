@@ -9,7 +9,7 @@ export default function ToC({}) {
     const toggleDropdown = () => {
         setOpen(!open)
     }
-    //TODO: find out more about types for HTMLAnchorElement and e.target.outertext
+
     const moveHeading = (e: any) => {
         e.preventDefault()
         setOpen(false)

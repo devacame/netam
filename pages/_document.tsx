@@ -6,7 +6,6 @@ class MyDocument extends Document {
             <Html lang='ko' className='scrollbar-hidden'>
                 <Head>
                     <meta charSet='utf-8' />
-                    
                     <link
                         rel='shortcut icon'
                         href='/icons/favicon.ico'
