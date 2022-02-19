@@ -1,6 +1,6 @@
 import BlogLayout from '@/components/BlogLayout'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { components } from '@/components/MDXComponents'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import MDXRemote from '@/components/MDXRemote'
 import ToC from '@/components/ToC'
 import { useEffect, useState } from 'react'
 import { PostData, SEOData } from '@/lib/types'
@@ -37,14 +37,32 @@ export default function Post({ metadata, content }: PageProps) {
                 </p>
                 {status === 'authenticated' && (
                     <Link href={'/admin/edit/' + metadata.id} passHref>
-                        <FiEdit3 />
+                        <a>
+                            <FiEdit3 />
+                        </a>
                     </Link>
                 )}
             </div>
             {renderToC && <ToC />}
             <article>
-                <MDXRemote {...content} components={components} />
+                <MDXRemote content={content} />
             </article>
+
+            <section
+                ref={(elem) => {
+                    if (!elem) {
+                        return
+                    }
+                    const scriptElem = document.createElement('script')
+                    scriptElem.src = 'https://utteranc.es/client.js'
+                    scriptElem.async = true
+                    scriptElem.setAttribute('repo', 'VESOC/vesoc-blog-comments')
+                    scriptElem.setAttribute('issue-term', 'title')
+                    scriptElem.setAttribute('theme', 'github-dark')
+                    scriptElem.crossOrigin = 'anonymous'
+                    elem.appendChild(scriptElem)
+                }}
+            />
         </BlogLayout>
     )
 }
