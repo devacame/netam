@@ -1,6 +1,6 @@
 @import 'SpoqaHanSansNeo.css';
 @import 'prism-nord.css';
-@import url('https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css');
 
 @tailwind base;
 @tailwind components;
@@ -28,10 +28,10 @@ article > h2 {
 article > h3 {
     @apply lg:text-xl text-lg text-[#916bbf] m-2;
 }
-article > a {
+a {
     @apply text-cyan-500 underline underline-offset-1 decoration-emerald-300;
 }
-article > a:hover {
+a:hover {
     @apply text-cyan-600 underline underline-offset-1 decoration-teal-400;
 }
 article > p {
