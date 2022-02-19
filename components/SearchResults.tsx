@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function SearchResult({ result }: { result: SearchResult }) {
     return (
-        <div className={'p-2 border-2 w-full'}>
+        <div className='p-2 border-2 w-full'>
             <Link href={`/blog/${result.id}`} passHref={true}>
                 <a className=''>
                     <div className='p-1'>
