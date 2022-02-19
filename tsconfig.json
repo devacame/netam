@@ -36,7 +36,6 @@
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": [
         "node_modules",
-        "components/MDXComponents.jsx",
         "lib/markdown.js",
         "components/CloudinaryUploadWidget.jsx"
     ]
