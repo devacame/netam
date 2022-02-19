@@ -15,7 +15,7 @@ export default function Search() {
     const toggleResults = () => {
         return setTimeout(() => {
             setOpenResult(!openResult)
-        }, 200)
+        }, 300)
     }
 
     useEffect(() => {
