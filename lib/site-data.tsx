@@ -58,7 +58,7 @@ const makeItem = async (post: Partial<PostData>): Promise<Item> => {
     }
 }
 
-export const generateMainFeeds = async (
+const generateMainFeeds = async (
     contents: string[],
     metadatas: BlogMeta[]
 ): Promise<void> => {
