@@ -79,10 +79,23 @@ const generateCache = async (metadata: BlogMeta[]): Promise<void> => {
         mkdirSync('cache')
     }
     const dataString =
-        'const postData = [' +
-        metadata.map((post) => JSON.stringify(post)).join(', ') +
+        "import {SearchResult} from '@/lib/types'\nconst postData: SearchResult[] = [" +
+        metadata
+            .map((post) => {
+                const searchQuery = {
+                    id: post.id,
+                    title: post.title,
+                    description: post.description,
+                    date: post.date,
+                    category: post.category,
+                    series: post.series,
+                }
+                JSON.stringify(searchQuery)
+            })
+            .join(', ')
+            .replace("__typename: 'Post',", '') +
         ']\nexport default postData'
-    writeFileSync('./cache/data.js', dataString)
+    writeFileSync('./cache/data.ts', dataString)
 }
 
 export const generateCacheNFeeds = async (): Promise<void> => {
