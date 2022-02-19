@@ -1,6 +1,8 @@
 import { gql } from '@apollo/client'
-import apolloClient from '@/lib/apollo'
+import { initializeApollo } from '@/lib/apollo'
 import type { PostData } from '@/lib/types'
+
+const apolloClient = initializeApollo()
 
 export async function getPaths(attr: string) {
     const {
@@ -115,7 +117,7 @@ export async function createPost(postData: PostData) {
             `,
             variables: { ...postData, content: encodedContent },
         })
-        .catch((e) => {
+        .catch((e: Error) => {
             console.error(e)
         })
 }
@@ -165,7 +167,7 @@ export async function updatePost(postData: PostData) {
             `,
             variables: { ...postData, content: encodedContent },
         })
-        .catch((e) => {
+        .catch((e: Error) => {
             console.error(e)
         })
 }
@@ -183,7 +185,7 @@ export async function togglePublishState(id: string, published: boolean) {
             `,
             variables: { id, published },
         })
-        .catch((e) => {
+        .catch((e: Error) => {
             console.error(e)
         })
 }

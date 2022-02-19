@@ -1,7 +1,9 @@
 import useSWRInfinite from 'swr/infinite'
 import { ApolloQueryResult, DocumentNode, gql } from '@apollo/client'
-import apolloClient from '@/lib/apollo'
+import { initializeApollo } from '@/lib/apollo'
 import { BlogMeta, PostsQueryData } from '@/lib/types'
+
+const apolloClient = initializeApollo()
 
 const fetcher = async (query: DocumentNode, ...variableArr: []) => {
     const variables = {}
