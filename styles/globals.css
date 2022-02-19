@@ -1,6 +1,6 @@
 @import 'SpoqaHanSansNeo.css';
 @import 'prism-nord.css';
-@import url('https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css');
+@import 'katex.min.css';
 
 @tailwind base;
 @tailwind components;
