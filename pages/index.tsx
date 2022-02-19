@@ -9,7 +9,7 @@ import {
 import BaseLayout from '@/components/BaseLayout'
 import { SEOData } from '@/lib/types'
 
-export default function About() {
+export default function Index() {
     const meta: SEOData = {
         title: 'VESOC | Student Developer/학생 개발자',
         description:
