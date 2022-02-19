@@ -76,7 +76,6 @@ const extractData = (
         | undefined
 ) => {
     const mergeData = data?.flatMap((d) => {
-        console.log(d)
         return d.data.data.posts.edges.flatMap(
             (e: { cursor: string; node: BlogMeta }) => e.node
         )
