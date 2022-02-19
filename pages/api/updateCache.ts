@@ -6,7 +6,7 @@ export default async function UpdatePostCache(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const secret = process.env.JWT_SECRET!
+    const secret = process.env.NEXTAUTH_SECRET!
     const token = await getToken({ req, secret })
     if (token) {
         generateCacheNFeeds()
