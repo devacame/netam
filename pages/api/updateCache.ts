@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getToken } from 'next-auth/jwt'
-import cachePostMetaData from '@/scripts/cache.mjs'
+import generateCacheNFeeds from '@/lib/site-data'
 
 export default async function UpdatePostCache(
     req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function UpdatePostCache(
     const secret = process.env.JWT_SECRET!
     const token = await getToken({ req, secret })
     if (token) {
-        cachePostMetaData()
+        generateCacheNFeeds()
         res.redirect('/admin')
     } else {
         res.status(401).redirect('/')
