@@ -69,7 +69,7 @@ export const PostQuery = queryType({
                 if (args.after) {
                     let afterQuery = {
                         where: {
-                            ...(!args.all && {published: true})
+                            ...(args.all === true && { published: true }),
                         },
                         skip: 1,
                         take: args.first,
@@ -81,9 +81,9 @@ export const PostQuery = queryType({
                 } else {
                     let firstQuery = {
                         where: {
-                            ...(!args.all && {published: true})
+                            ...(args.all === true && { published: true }),
                         },
-                        take: args.first
+                        take: args.first,
                     }
                     queryResults = await ctx.prisma.post.findMany(firstQuery)
                 }
@@ -93,7 +93,7 @@ export const PostQuery = queryType({
                     const myCursor = lastPostInResults.id
                     let secondQuery = {
                         where: {
-                            ...(!args.all && {published: true})
+                            ...(args.all === true && { published: true }),
                         },
                         cursor: {
                             id: myCursor,
@@ -101,7 +101,9 @@ export const PostQuery = queryType({
                         skip: 1,
                         take: args.first,
                     }
-                    const secondQueryResults = await ctx.prisma.post.findMany(secondQuery)
+                    const secondQueryResults = await ctx.prisma.post.findMany(
+                        secondQuery
+                    )
 
                     const result = {
                         pageInfo: {
