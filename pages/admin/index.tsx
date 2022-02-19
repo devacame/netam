@@ -1,10 +1,10 @@
 import AdminPost from '@/components/AdminPost'
 import AdminLayout from '@/components/AdminLayout'
 import Link from 'next/link'
-import usePostQuery from '@/lib/swr'
+import useAdminPostQuery from '@/lib/swr'
 
 export default function AdminPage() {
-    const { data, hasNextPage, size, setSize } = usePostQuery()
+    const { data, hasNextPage, size, setSize } = useAdminPostQuery()
     return (
         <AdminLayout>
             <h1 className='top-2 text-3xl text-emerald-300'>Admin Dashboard</h1>
@@ -18,7 +18,11 @@ export default function AdminPage() {
                     data.map((post) => (
                         <AdminPost key={post.id} postData={post} />
                     ))}
-                {hasNextPage && <button onClick={() => setSize(size + 1)}>Load More...</button>}
+                {hasNextPage && (
+                    <button onClick={() => setSize(size + 1)}>
+                        Load More...
+                    </button>
+                )}
             </div>
         </AdminLayout>
     )

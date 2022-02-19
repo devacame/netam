@@ -68,16 +68,21 @@ const getkeyAdmin = (pageIndex: any, previousPageData: PostsQueryData) => {
     return [query, 'first', 5, 'after', endCursor, 'all', true]
 }
 
-const extractData = (data: {
-    data: ApolloQueryResult<PostsQueryData>;
-}[] | undefined) => {
-    const mergeData = data?.flatMap((d) =>
-        d.data.data.posts.edges.flatMap((e: {
-            cursor: string
-            node: BlogMeta
-        }) => e.node)
-    )
-    const hasNextPage:boolean = data?.at(-1)?.data.data.posts.pageInfo.hasNextPage
+const extractData = (
+    data:
+        | {
+              data: any
+          }[]
+        | undefined
+) => {
+    const mergeData = data?.flatMap((d) => {
+        console.log(d)
+        return d.data.data.posts.edges.flatMap(
+            (e: { cursor: string; node: BlogMeta }) => e.node
+        )
+    })
+    const hasNextPage: boolean =
+        data?.at(-1)?.data.data.posts.pageInfo.hasNextPage
 
     return {
         data: mergeData,
