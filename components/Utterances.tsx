@@ -15,6 +15,6 @@ export default function Utterances() {
         scriptElem.setAttribute('theme', currentColor)
         scriptElem.crossOrigin = 'anonymous'
         elem!.appendChild(scriptElem)
-    }, [])
+    })
     return <section id='utterances' className='w-full' />
 }
