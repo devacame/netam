@@ -19,7 +19,7 @@ export default function Index() {
     }
     return (
         <BaseLayout meta={meta}>
-            <div className='flex flex-col w-4/5 text-center items-center bg-gray-100 dark:bg-darkBody rounded-lg py-5 mx-auto my-10'>
+            <div className='flex flex-col lg:w-4/5 md:w-full sm:w-full md:px-2 sm:px-2 text-center items-center bg-gray-100 dark:bg-darkBody rounded-lg py-5 mx-auto my-10'>
                 <div>
                     <h1 className='text-center'>
                         안녕하세요! 저는 💻VESOC입니다.
@@ -50,14 +50,16 @@ export default function Index() {
                             <SiFlutter size='40' color='#4ECFFC' />
                         </div>
                     </div>
-                    <p>
+                    <p className='whitespace-normal'>
                         현재는 <b>Go</b>를 배우고 있으며 최대한 다양한 언어와
                         기술을 접해보고 언젠가 완벽한 언어를 만들고 싶습니다.
                     </p>
                 </div>
-                <a href='mailto:[MAIL]' className='text-lightBlue'>
-                    [MAIL]
-                </a>
+                <button className='text-base text-lightBlue border-gray-700 active:border-green-200' onClick={() => {
+                    navigator.clipboard.writeText('contact@vesoc.dev')
+                }}>
+                    contact@vesoc.dev
+                </button>
             </div>
         </BaseLayout>
     )
