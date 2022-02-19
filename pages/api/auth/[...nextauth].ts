@@ -1,14 +1,13 @@
 import NextAuth from 'next-auth'
-// import GithubProvider from 'next-auth/providers/github'
-import Auth0Provider from 'next-auth/providers/auth0'
+import GithubProvider from 'next-auth/providers/github'
 import protectAPI from '@/lib/apiProtection'
 
 export default protectAPI(
     NextAuth({
         providers: [
-            Auth0Provider({
-                clientId: process.env.AUTH_CLIENT_ID!,
-                clientSecret: process.env.AUTH_CLIENT_SECRET!,
+            GithubProvider({
+                clientId: process.env.GITHUB_CLIENT_ID!,
+                clientSecret: process.env.GITHUB_CLIENT_SECRET!,
             }),
         ],
         secret: process.env.NEXTAUTH_SECRET,
