@@ -9,6 +9,7 @@ import { getPaths, getPost } from '@/lib/PostData'
 import { postContent } from '@/lib/markdown'
 import { useSession } from 'next-auth/react'
 import { FiEdit3 } from 'react-icons/fi'
+import Utterances from '@/components/Utterances'
 import Link from 'next/link'
 
 interface PageProps {
@@ -48,21 +49,7 @@ export default function Post({ metadata, content }: PageProps) {
                 <MDXRemote content={content} />
             </article>
 
-            <section
-                ref={(elem) => {
-                    if (!elem) {
-                        return
-                    }
-                    const scriptElem = document.createElement('script')
-                    scriptElem.src = 'https://utteranc.es/client.js'
-                    scriptElem.async = true
-                    scriptElem.setAttribute('repo', 'VESOC/vesoc-blog-comments')
-                    scriptElem.setAttribute('issue-term', 'title')
-                    scriptElem.setAttribute('theme', 'github-dark')
-                    scriptElem.crossOrigin = 'anonymous'
-                    elem.appendChild(scriptElem)
-                }}
-            />
+            <Utterances />
         </BlogLayout>
     )
 }

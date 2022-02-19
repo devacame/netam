@@ -1,11 +1,12 @@
 import { useTheme } from 'next-themes'
 
-export default function ThemeToggleBtn({ mounted }: {mounted: boolean}) {
+export default function ThemeToggleBtn({ mounted }: { mounted: boolean }) {
     const { resolvedTheme, setTheme } = useTheme()
     return (
         <button
             aria-label='Toggle Dark Mode'
             type='button'
+            id='ThemeBtn'
             className='fixed bottom-5 right-5 w-10 h-10 p-3 bg-gray-200 rounded dark:bg-gray-800'
             onClick={() =>
                 setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
