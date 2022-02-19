@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Host
+Host: https://www.vesoc.dev
+
+# Sitemaps
+Sitemap: https://www.vesoc.dev/sitemap.xml
