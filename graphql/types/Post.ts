@@ -210,7 +210,7 @@ export const PostMutation = mutationType({
                         },
                     })
                     .catch((e: Error) => {
-                        console.log(e)
+                        console.log(e, typeof e)
                         return null
                     })
                 return result

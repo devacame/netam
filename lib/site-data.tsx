@@ -114,7 +114,7 @@ export const generateCacheNFeeds = async (): Promise<void> => {
         await generateCache(metadatas)
         await generateMainFeeds(contents, metadatas)
     } catch (e) {
-        console.log(e)
+        console.log(e, typeof e)
     }
 }
 

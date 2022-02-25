@@ -10,7 +10,7 @@ export default function CloudinaryUploadWidget() {
             },
             (error, result) => {
                 if (!error && result && result.event === 'success') {
-                    console.log('Successful Upload, Info: ', result.info)
+                    alert('Successful Upload, Info: ', result.info)
                 }
             }
         )
