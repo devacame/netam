@@ -56,7 +56,7 @@ export default function Editor({
             }
             window.location.href = '/admin'
         } catch (e) {
-            console.log(e, typeof e)
+            console.log(e)
         }
     }
     return (
