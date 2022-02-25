@@ -78,23 +78,23 @@ const generateCache = async (metadata: BlogMeta[]): Promise<void> => {
     } catch (error) {
         mkdirSync('cache')
     }
-    const dataString =
-        "import {SearchResult} from '@/lib/types'\nconst postData: SearchResult[] = [" +
-        metadata
-            .map((post) => {
-                const searchQuery = {
-                    id: post.id,
-                    title: post.title,
-                    description: post.description,
-                    date: post.date,
-                    category: post.category,
-                    series: post.series,
-                }
-                JSON.stringify(searchQuery)
-            })
-            .join(', ')
-            .replace("__typename: 'Post',", '') +
-        ']\nexport default postData'
+    const metadataStr = metadata
+        .map((post) => {
+            const searchQuery = {
+                id: post.id,
+                title: post.title,
+                description: post.description,
+                date: post.date,
+                category: post.category,
+                series: post.series,
+            }
+            JSON.stringify(searchQuery)
+        })
+        .join(', ')
+        .replace("__typename: 'Post',", '')
+    const dataString = `import {SearchResult} from "@/lib/types"\nconst postData: SearchResult[] = [${
+        metadataStr.length > 0 ? metadataStr : ''
+    }]\nexport default postData`
     writeFileSync('./cache/data.ts', dataString)
 }
 
@@ -103,7 +103,6 @@ export const generateCacheNFeeds = async (): Promise<void> => {
     let contents: string[] = [],
         metadatas: BlogMeta[] = []
     for (const postPath of postPaths) {
-        // for (let i = 0; i < postPaths.length; i++) {
         const { content, metadatas: metadata } = await getPost(
             postPath.params.id
         )
