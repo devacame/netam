@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import LOGO from '@/components/LOGO'
-import { GoMarkGithub } from 'react-icons/go'
+import { GoMarkGithub, GoRss } from 'react-icons/go'
 import Search from '@/components/Search'
 import AuthenticateBtn from '@/components/AuthenticateBtn'
 import { useSession } from 'next-auth/react'
@@ -62,6 +62,11 @@ export default function Nav() {
                             >
                                 <GoMarkGithub />
                             </a>
+                            <Link href='/feeds' passHref>
+                                <a className='text-black dark:text-white'>
+                                    <GoRss />
+                                </a>
+                            </Link>
                             <AuthenticateBtn />
                         </div>
                     </div>
