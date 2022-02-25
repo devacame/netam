@@ -37,6 +37,7 @@ export default function Nav() {
             {!isLargeScreen && (
                 <button
                     className='lg:hidden nav-btn'
+                    name='Home-btn'
                     onClick={() => setToggleMenu(!toggleMenu)}
                 >
                     <LOGO customClass={'w-10 h-10'} />
