@@ -8,6 +8,7 @@
 
 html {
     font-family: Spoqa Han Sans Neo;
+    font-display: swap;
     @apply accent-[#61d7e4] caret-[#61d7e4];
 }
 
