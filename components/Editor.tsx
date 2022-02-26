@@ -3,6 +3,7 @@ import { createPost, updatePost } from '@/lib/PostData'
 import Link from 'next/link'
 import { BsArrowLeftSquare } from 'react-icons/bs'
 import { PostData } from '@/lib/types'
+import Script from 'next/script'
 import CloudinaryUploadWidget from '@/components/CloudinaryUploadWidget'
 
 interface Props {
@@ -60,6 +61,10 @@ export default function Editor({
     }
     return (
         <div className='flex flex-col'>
+            <Script
+                src='https://upload-widget.cloudinary.com/global/all.js'
+                strategy='afterInteractive'
+            />
             <Link href='/admin'>
                 <a className='text-green-100 w-10 h-10 ml-4 mt-4'>
                     <BsArrowLeftSquare className='w-7 h-7' />
