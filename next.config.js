@@ -16,12 +16,12 @@ module.exports = {
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self';
+  script-src 'self' 'unsafe-inline';
   child-src 'self';
-  style-src 'self';
-  img-src *.cloudinary.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' *.cloudinary.com;
   media-src 'none';
-  connect-src 'self' *.cloudinary.com;
+  connect-src 'self' *.cloudinary.com vitals.vercel-insights.com;
   font-src 'self';
 `
 const securityHeaders = [
