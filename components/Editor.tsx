@@ -63,7 +63,7 @@ export default function Editor({
         <div className='flex flex-col'>
             <Script
                 src='https://upload-widget.cloudinary.com/global/all.js'
-                strategy='beforeInteractive'
+                strategy='afterInteractive'
             />
             <Link href='/admin'>
                 <a className='text-green-100 w-10 h-10 ml-4 mt-4'>
