@@ -5,6 +5,7 @@ import { BsArrowLeftSquare } from 'react-icons/bs'
 import { PostData } from '@/lib/types'
 import Script from 'next/script'
 import CloudinaryUploadWidget from '@/components/CloudinaryUploadWidget'
+import Head from 'next/head'
 
 interface Props {
     editorType: 'new' | 'edit'
@@ -59,11 +60,13 @@ export default function Editor({
             console.log(e)
         }
     }
+    const [scriptLoaded, setScriptLoaded] = useState(false)
     return (
         <div className='flex flex-col'>
             <Script
                 src='https://upload-widget.cloudinary.com/global/all.js'
-                strategy='afterInteractive'
+                strategy='beforeInteractive'
+                onLoad={() => setScriptLoaded(true)}
             />
             <Link href='/admin'>
                 <a className='text-green-100 w-10 h-10 ml-4 mt-4'>
@@ -179,7 +182,7 @@ export default function Editor({
                                     }}
                                 />
                             </div>
-                            <CloudinaryUploadWidget />
+                            {scriptLoaded && <CloudinaryUploadWidget />}
                         </div>
                         <div className='flex flex-col gap-y-2 w-1/2'>
                             <label htmlFor='content'>Content</label>
