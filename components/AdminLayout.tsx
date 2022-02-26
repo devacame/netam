@@ -7,7 +7,7 @@ interface PageProps {
     children: ReactNode
 }
 
-export default function BlogLayout({ children }: PageProps) {
+export default function AdminLayout({ children }: PageProps) {
     const [mounted, setMounted] = useState(false)
     useEffect(() => setMounted(true), [])
     return (
