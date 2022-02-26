@@ -15,14 +15,16 @@ module.exports = {
 }
 
 const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline';
-  child-src 'self';
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' *.cloudinary.com;
-  media-src 'none';
-  connect-src 'self' *.cloudinary.com vitals.vercel-insights.com;
-  font-src 'self';
+    default-src 'self';
+    script-src 'self' ${
+        process.env.NODE_ENV !== 'production' ? "'unsafe-eval'" : ''
+    } data:;
+    child-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' *.cloudinary.com;
+    media-src 'none';
+    connect-src 'self' *.cloudinary.com vitals.vercel-insights.com;
+    font-src 'self';
 `
 const securityHeaders = [
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -54,11 +56,5 @@ const securityHeaders = [
     {
         key: 'Strict-Transport-Security',
         value: 'max-age=31536000; includeSubDomains; preload',
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-    // Opt-out of Google FLoC: https://amifloced.org/
-    {
-        key: 'Permissions-Policy',
-        value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
     },
 ]
