@@ -18,7 +18,7 @@ const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' ${
         process.env.NODE_ENV !== 'production' ? "'unsafe-eval'" : ''
-    } data:;
+    } upload-widget.cloudinary.com data:;
     child-src 'self';
     style-src 'self' 'unsafe-inline';
     img-src 'self' *.cloudinary.com;
