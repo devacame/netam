@@ -5,7 +5,6 @@ import { BsArrowLeftSquare } from 'react-icons/bs'
 import { PostData } from '@/lib/types'
 import Script from 'next/script'
 import CloudinaryUploadWidget from '@/components/CloudinaryUploadWidget'
-import Head from 'next/head'
 
 interface Props {
     editorType: 'new' | 'edit'
