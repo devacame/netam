@@ -8,6 +8,7 @@ export default function AuthenticateBtn() {
             {status === 'unauthenticated' && (
                 <button className='w-6 h-6' onClick={() => signIn('github')}>
                     <HiOutlineLockOpen className='w-full h-full' />
+                    <p className='sr-only'>Auth</p>
                 </button>
             )}
             {status === 'authenticated' && (
@@ -20,6 +21,7 @@ export default function AuthenticateBtn() {
                     }
                 >
                     <HiOutlineLockClosed className='w-full h-full' />
+                    <p className='sr-only'>Auth</p>
                 </button>
             )}
         </>

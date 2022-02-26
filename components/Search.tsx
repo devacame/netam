@@ -34,6 +34,9 @@ export default function Search() {
     return (
         <div className='relative mx-auto text-gray-600 w-full'>
             <form className='flex flex-row justify-center items-center'>
+                <label className='sr-only' htmlFor='search'>
+                    Search
+                </label>
                 <input
                     type='search'
                     name='search'

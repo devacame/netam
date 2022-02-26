@@ -37,10 +37,10 @@ export default function Nav() {
             {!isLargeScreen && (
                 <button
                     className='lg:hidden nav-btn'
-                    name='Home-btn'
                     onClick={() => setToggleMenu(!toggleMenu)}
                 >
                     <LOGO customClass={'w-10 h-10'} />
+                    Home-btn
                 </button>
             )}
             {toggleMenu && (
@@ -61,10 +61,12 @@ export default function Nav() {
                                 className='text-black dark:text-white'
                             >
                                 <GoMarkGithub />
+                                <p className='sr-only'>Github</p>
                             </a>
                             <Link href='/feeds' passHref>
                                 <a className='text-black dark:text-white'>
                                     <GoRss />
+                                    <p className='sr-only'>RSS</p>
                                 </a>
                             </Link>
                             <AuthenticateBtn />
