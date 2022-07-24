@@ -34,3 +34,12 @@ yarn-error.log*
 .vercel
 
 /posts
+
+.trunk/
+.*.yaml
+tsconfig.tsbuildinfo
+prisma/migrations/
+public/feeds/*.xml
+public/feeds/*.json
+.devcontainer/
+graphql/schema.graphql
