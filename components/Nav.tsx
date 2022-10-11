@@ -40,7 +40,7 @@ export default function Nav() {
                     onClick={() => setToggleMenu(!toggleMenu)}
                 >
                     <LOGO customClass={'w-10 h-10'} />
-                    Home-btn
+                    <span className='sr-only'>Home-btn</span>
                 </button>
             )}
             {toggleMenu && (
